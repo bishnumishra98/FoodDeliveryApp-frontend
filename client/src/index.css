@@ -15,9 +15,29 @@ code {
 .navbar-brand {
   color: black;
   font-weight: 700;
+  font-size: 2rem !important;
 }
 
 .navbar-nav {
   color: black;
   font-weight: 500;
+  font-size: 1.2rem !important;
+}
+
+h1 {
+  font-size: 20px !important;
+}
+
+.flex-container {
+  display: flex !important;
+}
+
+.btn {
+  background-color: red !important;
+  color: white !important;
+}
+
+select {
+  box-shadow: none !important;
+  border-color: black !important;
 }
