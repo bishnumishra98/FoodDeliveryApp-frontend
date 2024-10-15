@@ -31,7 +31,7 @@ const finalReducer = combineReducers({
 const store = configureStore({
     reducer: finalReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
-    devTools: process.env.NODE_ENV !== 'production',
+    devTools: process.env.NODE_ENV !== 'production',   // DevTools will be enabled in development mode automatically
 });
 
 export default store;
