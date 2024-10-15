@@ -5,12 +5,12 @@ import { getAllPizzas } from '../actions/pizzaActions';
 
 export default function Homescreen() {
     const dispatch = useDispatch();
-    const pizzasstate = useSelector(state => state.getAllPizzasReducer)
-    const {pizzas, error, loading} = pizzasstate
+    const pizzasstate = useSelector((state) => state.getAllPizzasReducer)
+    const {pizzas, error, loading} = pizzasstate;
 
     useEffect(() => {
         dispatch(getAllPizzas())
-    }, [])
+    }, []);
 
     return (
         <div>
