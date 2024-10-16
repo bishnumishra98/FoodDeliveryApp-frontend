@@ -29,7 +29,7 @@ export default function Pizza({pizza}) {
                 <p>Quantity</p>
                 <select className='form-control' value={quantity} onChange={(e) => {setquantity(e.target.value)}}>
                     {[...Array(10).keys()].map((x, i) => {
-                        return <option key={i} value={i+1}>{i+1}</option>
+                        return <option value={i+1} key={i}>{i+1}</option>
                     })}
                 </select>
             </div>
