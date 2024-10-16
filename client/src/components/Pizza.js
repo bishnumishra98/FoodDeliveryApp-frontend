@@ -8,8 +8,9 @@ export default function Pizza({pizza}) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // Log the values here before returning the JSX
-    console.log(pizza.prices);
+    function addtocart() {
+        
+    }
 
     return (
         <div className='shadow-lg p-3 mb-5 bg-white rounded'>
@@ -45,7 +46,7 @@ export default function Pizza({pizza}) {
                     {/* <h1 className='mt-1'>Price: ₹{pizza?.prices?.[0]?.[variant] * quantity || -1}</h1> */}
                 </div>
                 <div className='m-1 w-100'>
-                    <button className="btn">ADD TO CART</button>
+                    <button className="btn" onClick={addtocart}>ADD TO CART</button>
                 </div>
             </div>
 

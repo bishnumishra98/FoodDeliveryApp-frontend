@@ -1,31 +1,16 @@
-// import {combineReducers} from 'redux'
-// import {createStore, applyMiddleware} from 'redux'
-// import thunk from 'redux-thunk'
-// import {composeWithDevTools} from '@redux-devtools/extension'
-// import { getAllPizzasReducer } from './reducers/pizzaReducers'
-
-// const finalReducer = combineReducers({
-//     getAllPizzasReducer: getAllPizzasReducer
-// })
-// const initialState = {}
-
-// const composeEnhancers = composeWithDevTools({})
-
-// const store = createStore(finalReducer, initialState, composeEnhancers(applyMiddleware(thunk)))
-
-// export default store
-
 // -----------------------------------------------------------------------------------
-// createStore is depreciated. So tha above code will not work:
+// createStore is depreciated. use configureStore.
 // -----------------------------------------------------------------------------------
 
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { thunk } from 'redux-thunk';
 import { getAllPizzasReducer } from './reducers/pizzaReducers';
+import { cartReducer } from './reducers/cartReducers';
 
 const finalReducer = combineReducers({
     getAllPizzasReducer: getAllPizzasReducer,
+    cartReducer: cartReducer
 });
 
 const store = configureStore({
