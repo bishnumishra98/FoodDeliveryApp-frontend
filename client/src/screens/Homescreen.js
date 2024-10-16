@@ -7,7 +7,7 @@ import { getAllPizzas } from '../actions/pizzaActions';
 export default function Homescreen() {
     const dispatch = useDispatch();
 
-    const pizzasstate = useSelector(state => state.getAllPizzasReducer);   // useSelector hook is used to get data from reducer
+    const pizzasstate = useSelector(state => state.getAllPizzasReducer);   // is used to pull the pizzas data from the Redux store (getAllPizzasReducer)
     const {pizzas, error, loading} = pizzasstate;
 
     useEffect(() => {
