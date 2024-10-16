@@ -3,7 +3,7 @@ import {Modal} from 'react-bootstrap'
 
 export default function Pizza({pizza}) {
     const [quantity , setquantity] = useState(1);
-    const [varient , setvarient] = useState('small');
+    const [variant , setvariant] = useState('small');
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -16,10 +16,10 @@ export default function Pizza({pizza}) {
 
         <div className="flex-container">
             <div className='w-100 m-1'>
-                <p>Varients</p>
-                <select className='form-control' value={varient} onChange={(e) => {setvarient(e.target.value)}}>
-                    {pizza.varients.map(varient => {
-                        return <option value={varient}>{varient}</option>
+                <p>Variants</p>
+                <select className='form-control' value={variant} onChange={(e) => {setvariant(e.target.value)}}>
+                    {pizza.variants.map(variant => {
+                        return <option value={variant}>{variant}</option>
                     })}
                 </select>
                 
@@ -36,7 +36,7 @@ export default function Pizza({pizza}) {
 
         <div className="flex-container">
             <div className='m-1 w-100'>
-                <h1 className='mt-1'>Price: ₹{pizza.prices[0][varient] * quantity}</h1>
+                <h1 className='mt-1'>Price: ₹{pizza.prices[0][variant] * quantity}</h1>
             </div>
             <div className='m-1 w-100'>
                 <button className="btn">ADD TO CART</button>
