@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import pizzas from '../pizzadata'
+// import pizzas from '../pizzadata'   // no more needed data from local file
 import Pizza from '../components/Pizza'
 import { getAllPizzas } from '../actions/pizzaActions';
 
@@ -18,9 +18,9 @@ export default function Homescreen() {
         <div>
             <div className="row">
                 {loading ? (<h1>Loading...</h1>) : error ? (<h1>Something went wrong.</h1>) : (
-                    pizzas.map((pizza, index) => {
+                    pizzas.map((pizza) => {
                         return (
-                            <div className="col-md-4" key={index}>
+                            <div className="col-md-4" key={pizza._id}>
                                 <Pizza pizza={pizza} />
                             </div>
                         );
