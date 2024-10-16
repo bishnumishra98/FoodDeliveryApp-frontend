@@ -18,8 +18,9 @@ export default function Pizza({pizza}) {
             <div className='w-100 m-1'>
                 <p>Variants</p>
                 <select className='form-control' value={variant} onChange={(e) => {setvariant(e.target.value)}}>
-                    {pizza.variants.map(variant => {
-                        return <option value={variant}>{variant}</option>
+                    {pizza.variants.map((variant, index) => {
+                        // return <option value={variant}>{variant}</option>
+                        return <option value={variant} key={index}>{variant}</option>
                     })}
                 </select>
                 
@@ -28,7 +29,7 @@ export default function Pizza({pizza}) {
                 <p>Quantity</p>
                 <select className='form-control' value={quantity} onChange={(e) => {setquantity(e.target.value)}}>
                     {[...Array(10).keys()].map((x, i) => {
-                        return <option value={i+1}>{i+1}</option>
+                        return <option key={i} value={i+1}>{i+1}</option>
                     })}
                 </select>
             </div>
