@@ -1,4 +1,4 @@
-export const addToCart = (pizza, quantity, variant) => dispatch => {
+export const addToCart = (pizza, quantity, variant) => (dispatch, getState) => {
     var cartItem = {
         name: pizza.name,
         _id: pizza._id,
@@ -10,4 +10,7 @@ export const addToCart = (pizza, quantity, variant) => dispatch => {
     }
 
     dispatch({type: 'ADD_TO_CART', payload: cartItem});
+
+    const cartItems = getState().cartReducer.cartItems
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
 }
