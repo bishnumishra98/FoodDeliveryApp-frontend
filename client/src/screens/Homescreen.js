@@ -16,11 +16,11 @@ export default function Homescreen() {
 
     return (
         <div>
-            <div className="row">
+            <div className="row justify-content-center">
                 {loading ? (<h1>Loading...</h1>) : error ? (<h1>Something went wrong.</h1>) : (
                     pizzas.map((pizza) => {
                         return (
-                            <div className="col-md-4" key={pizza._id}>
+                            <div className="col-md-3 m-3" key={pizza._id}>
                                 <Pizza pizza={pizza} />
                             </div>
                         );

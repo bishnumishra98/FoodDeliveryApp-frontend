@@ -12,7 +12,7 @@ export default function Pizza({pizza}) {
     console.log(pizza.prices);
 
     return (
-        <div style={{margin: '69px'}} className='shadow-lg p-3 mb-5 bg-white rounded'>
+        <div className='shadow-lg p-3 mb-5 bg-white rounded'>
             <div onClick={handleShow}>
                 <h1>{pizza.name}</h1>
                 <img src={pizza.image} alt="pizza-image" style={{height:'200px', width:'200px'}}/>
