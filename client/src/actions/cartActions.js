@@ -4,9 +4,9 @@ export const addToCart = (pizza, quantity, variant) => (dispatch, getState) => {
         _id: pizza._id,
         image: pizza.image,
         variant: variant,
-        quantity: quantity,
+        quantity: Number(quantity),
         prices: pizza.prices,
-        price: pizza.prices[0][variant]
+        price: Number(pizza.prices[0][variant])
     }
 
     dispatch({type: 'ADD_TO_CART', payload: cartItem});

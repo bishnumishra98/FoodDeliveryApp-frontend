@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../actions/cartActions';
 
 export default function Cartscreen() {
     const cartstate = useSelector(state => state.cartReducer);
     const cartItems = cartstate.cartItems;
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -16,9 +18,9 @@ export default function Cartscreen() {
                                 <h1>{item.name} [{item.variant}]</h1>
                                 <h1>Price: {item.quantity} * {item.price} = {item.quantity * item.price}</h1>
                                 <h1 style={{display: 'inline'}}>Quantity: </h1>
-                                <i className="fa-solid fa-plus"></i>
+                                <i className="fa-solid fa-plus" onClick={() => {dispatch(addToCart(item, item.quantity+1, item.variant))}}></i>
                                 <b>{item.quantity}</b>
-                                <i className="fa-solid fa-minus"></i>
+                                <i className="fa-solid fa-minus" onClick={() => {dispatch(addToCart(item, item.quantity-1, item.variant))}}></i>
                                 <hr />
                             </div>
                             <div className='m-1 w-100'>
