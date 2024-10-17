@@ -42,7 +42,6 @@ export default function Cartscreen() {
                         <button className='btn' style={{fontSize: '20px'}}>Place order</button>
                     </div>
                 )}
-
             </div>
         </div>
     )
