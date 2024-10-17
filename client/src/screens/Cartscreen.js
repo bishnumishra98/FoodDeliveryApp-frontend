@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../actions/cartActions';
+import { deleteFromCart } from '../actions/cartActions';
 
 export default function Cartscreen() {
     const cartstate = useSelector(state => state.cartReducer);
@@ -27,7 +28,7 @@ export default function Cartscreen() {
                                 <img src={item.image} alt="item-image" style={{height: '80px', width: '80px'}} />
                             </div>
                             <div className='m-1 w-100'>
-                                <i className="fa-solid fa-trash mt-4"></i>
+                                <i className="fa-solid fa-trash mt-4" onClick={() => {dispatch(deleteFromCart(item))}}></i>
                             </div>
                         </div>
                     })}

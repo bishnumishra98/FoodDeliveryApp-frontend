@@ -9,8 +9,18 @@ export const addToCart = (pizza, quantity, variant) => (dispatch, getState) => {
         price: Number(pizza.prices[0][variant])
     }
 
-    dispatch({type: 'ADD_TO_CART', payload: cartItem});
+    if(cartItem.quantity > 10) {
+        alert("Please contact the restaurant owner for ordering more than 10 quantity of this item.\nOwner contact: +91 9330188837");
+    } else {
+        dispatch({type: 'ADD_TO_CART', payload: cartItem});
+    }
 
-    const cartItems = getState().cartReducer.cartItems
-    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    const cartItems = getState().cartReducer.cartItems;
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+export const deleteFromCart = (pizza) => (dispatch, getState) => {
+    dispatch({type: 'DELETE_FROM_CART', payload: pizza});
+    const cartItems = getState().cartReducer.cartItems;
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
