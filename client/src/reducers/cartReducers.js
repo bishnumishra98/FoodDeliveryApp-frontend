@@ -20,10 +20,14 @@ export const cartReducer = (state={cartItems: []}, action) => {
             };
         }
 
-        case 'DELETE_FROM_CART' : return {
+        case 'DELETE_FROM_CART' : 
+        return {
             ...state,
-            cartItems: state.cartItems.filter(item => item._id !== action.payload._id)
-        }
+            cartItems: state.cartItems.filter(item => 
+                item._id !== action.payload._id || item.variant !== action.payload.variant
+            )
+        };
+
         
         default: return state
     }
