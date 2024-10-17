@@ -14,7 +14,7 @@ export default function Cartscreen() {
                         return <div className="flex-container">
                             <div className='text-start m-1 w-100'>
                                 <h1>{item.name} [{item.variant}]</h1>
-                                <h1>Price: {item.quantity} * {item.prices[0][item.variant]} = {item.price}</h1>
+                                <h1>Price: {item.quantity} * {item.price} = {item.quantity * item.price}</h1>
                                 <h1 style={{display: 'inline'}}>Quantity: </h1>
                                 <i className="fa-solid fa-plus"></i>
                                 <b>{item.quantity}</b>
