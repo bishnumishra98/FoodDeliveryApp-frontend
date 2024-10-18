@@ -1,57 +1,61 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+	monospace;
 }
 
 .navbar-brand {
-  color: black;
-  font-weight: 700;
-  font-size: 2rem !important;
+	color: black;
+	font-weight: 700;
+	font-size: 2rem !important;
 }
 
 .navbar-nav {
-  color: black;
-  font-weight: 500;
-  font-size: 1.2rem !important;
+	color: black;
+	font-weight: 500;
+	font-size: 1.2rem !important;
 }
 
 h1 {
-  font-size: 20px !important;
+	font-size: 20px !important;
 }
 
 .flex-container {
-  display: flex !important;
+	display: flex !important;
 }
 
 .btn {
-  background-color: red !important;
-  color: white !important;
+	background-color: red !important;
+	color: white !important;
 }
 
 select {
-  box-shadow: none !important;
-  border-color: black !important;
+	box-shadow: none !important;
+	border-color: black !important;
 }
 
 .fa-plus {
-  color: darkgreen;
-  margin: 5px;
+	color: darkgreen;
+	margin: 5px;
 }
 
 .fa-minus {
-  color: darkred;
-  margin: 5px;
+	color: darkred;
+	margin: 5px;
 }
 
 .fa-trash {
-  color: red;
+	color: red;
+}
+
+input {
+	margin-top: 10px !important;
 }
