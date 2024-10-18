@@ -16,7 +16,7 @@ const Navbar = () => {
 					{/* Add 'ms-auto' class to align nav items to the left */}
 					<ul className="navbar-nav ms-auto">
 					<li className="nav-item">
-						<a className="nav-link active" aria-current="page" href="#">Login</a>
+						<a className="nav-link active" aria-current="page" href="/login">Login</a>
 					</li>
 					<li className="nav-item">
 						<a className="nav-link" href="/cart">Cart {cartstate.cartItems.length}</a>
