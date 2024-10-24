@@ -19,8 +19,8 @@ const Navbar = () => {
 					{/* Add 'ms-auto' class to align nav items to the left */}
 					<ul className="navbar-nav ms-auto">
 						{currentUser ? (
-							<div class="dropdown">
-								<a className="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div class="dropdown mt-2">
+								<a className="dropdown-toggle" style={{color:'black', textDecoration:'none'}} type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									{currentUser.name}
 								</a>
 								<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
