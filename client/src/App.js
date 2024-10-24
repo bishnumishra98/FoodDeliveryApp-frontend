@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Homescreen from './screens/Homescreen';
+import 'bootstrap';
 import { BrowserRouter, Routes, Route, Link, Switch } from 'react-router-dom';
 import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
