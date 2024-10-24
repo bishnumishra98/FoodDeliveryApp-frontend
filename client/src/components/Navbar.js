@@ -1,12 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useSelector, useDispatch} from 'react-redux';
+import { logoutUser } from '../actions/pizzaActions';
 
 const Navbar = () => {
 	const cartstate = useSelector(state => state.cartReducer);
 	const userstate = useSelector(state => state.loginUserReducer);
 	console.log(userstate);
 	const {currentUser} = userstate;
+	const dispatch = useDispatch();
 	
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary shadow-lg p-3 mb-5 bg-white rounded">
@@ -25,7 +27,7 @@ const Navbar = () => {
 								</a>
 								<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a className="dropdown-item" href="#">My orders</a>
-									<a className="dropdown-item" href="#">Logout</a>
+									<a className="dropdown-item" href="#" onClick={() => {dispatch(logoutUser())}}><li>Logout</li></a>
 								</div>
 							</div>
 							) : (

@@ -12,3 +12,8 @@ export const getAllPizzas = () => async (dispatch) => {
         dispatch({type:'GET_PIZZAS_FAILED' , payload : error});
     }
 }
+
+export const logoutUser = () => dispatch => {
+    localStorage.removeItem('currentUser');
+    window.location.href = '/login';
+}
