@@ -8,6 +8,7 @@ export default function Loginscreen() {
     const dispatch = useDispatch();
 
 	useEffect(() => {
+		// If currentUser is already present in local stoarge, direct the user to homepage. 
 		if(localStorage.getItem('currentUser')) {
 			window.location.href='/'
 		}
