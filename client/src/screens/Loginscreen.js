@@ -28,7 +28,7 @@ export default function Loginscreen() {
 						<input type="text" placeholder="password" className="form-control" value={password} required onChange={(e)=>{setpassword(e.target.value)}} />
 						<button onClick={login} className="btn mt-3 mb-3">LOGIN</button>
 						<br/>
-						<a style={{color:'black'}} href="/register" className="mt-2">Click Here To Register</a>
+						<a style={{color:'black'}} href="/register" className="mt-2">New user? Click Here To Register</a>
 					</div>
 				</div>
       		</div>
