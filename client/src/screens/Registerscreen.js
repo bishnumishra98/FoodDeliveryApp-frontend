@@ -16,7 +16,11 @@ export default function Registerscreen() {
 	const dispatch = useDispatch();
 
 	function register() {
-		if(password !== cpassword) {
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		if(!emailPattern.test(email)) {
+			alert("Please enter a valid email");
+		} else if(password !== cpassword) {
 			alert("Passwords do not match");
 		} else {
 			const user = {
