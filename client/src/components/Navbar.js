@@ -4,7 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 
 const Navbar = () => {
 	const cartstate = useSelector(state => state.cartReducer);
-
+	const userstate = useSelector(state => state.loginUserReducer);
+	console.log(userstate);
+	const {currentUser} = userstate;
+	
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary shadow-lg p-3 mb-5 bg-white rounded">
 			<div className="container-fluid">
@@ -15,12 +18,17 @@ const Navbar = () => {
 				<div className="collapse navbar-collapse" id="navbarNav">
 					{/* Add 'ms-auto' class to align nav items to the left */}
 					<ul className="navbar-nav ms-auto">
-					<li className="nav-item">
-						<a className="nav-link active" aria-current="page" href="/login">Login</a>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="/cart">Cart {cartstate.cartItems.length}</a>
-					</li>
+						{currentUser ? (
+							<li>{currentUser.name}</li>
+							) : (
+							<li className="nav-item">
+							<a className="nav-link active" aria-current="page" href="/login">Login</a>
+							</li>
+						)}
+						
+						<li className="nav-item">
+							<a className="nav-link" href="/cart">Cart {cartstate.cartItems.length}</a>
+						</li>
 					</ul>
 				</div>
 			</div>

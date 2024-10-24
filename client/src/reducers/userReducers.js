@@ -15,7 +15,7 @@ export const registerUserReducer = (state={} , action) => {
     }
 }
 
-export const loginUserReducer =(state={} , action) =>{
+export const loginUserReducer = (state={} , action) => {
     switch(action.type) {
         case 'USER_LOGIN_REQUEST' : return {
             loading:true
@@ -31,5 +31,4 @@ export const loginUserReducer =(state={} , action) =>{
       }
       default : return state
     }
-
 }

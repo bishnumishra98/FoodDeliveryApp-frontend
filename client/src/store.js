@@ -12,7 +12,8 @@ import { loginUserReducer, registerUserReducer } from './reducers/userReducers';
 const finalReducer = combineReducers({
     getAllPizzasReducer: getAllPizzasReducer,
     cartReducer: cartReducer,
-    registerUserReducer: registerUserReducer
+    registerUserReducer: registerUserReducer,
+    loginUserReducer: loginUserReducer
 });
 
 // If there is any item with the name 'cartItems' in the local storage, first we have to convert it to JSON object, then assign it to the store.
