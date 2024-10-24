@@ -27,14 +27,16 @@ export default function Registerscreen() {
 	return (
 		<div>
 			<div className="row justify-content-center mt-5">
-				<div className="col-md-5 mt-5 text-start">
+				<div className="col-md-5 mt-5 text-start shadow-lg p-3 mb-5 bg-white rounded">
 					<h2 className='text-center m-3' style={{fontSize: '33px'}}>Register</h2>
 					<div>
 						<input required type="text" placeholder='Name' className='form-control' value={name} onChange={(e) => {setname(e.target.value)}} />
 						<input required type="text" placeholder='Email' className='form-control' value={email} onChange={(e) => {setemail(e.target.value)}} />
 						<input required type="text" placeholder='Password' className='form-control' value={password} onChange={(e) => {setpassword(e.target.value)}} />
 						<input required type="text" placeholder='Confirm password' className='form-control' value={cpassword} onChange={(e) => {setcpassword(e.target.value)}} />
-						<button className='btn mt-3' onClick={register}>Sign up</button>
+						<button className='btn mt-3 mb-3' onClick={register}>Sign up</button>
+						<br />
+						<a style={{color:'black'}} href="/login">Already have an account? Click here to login</a>
 					</div>
 				</div>
 			</div>
