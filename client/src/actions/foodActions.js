@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// 'getAllFoods' is the action name, while 'GET_FOODS_...' are the reducers.
 export const getAllFoods = () => async (dispatch) => {
   dispatch({ type: "GET_FOODS_REQUEST" });
 
