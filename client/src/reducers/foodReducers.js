@@ -1,5 +1,6 @@
+// 'getAllFoodsReducer' is the reducer name
+
 export const getAllFoodsReducer = (state = { foods: [] }, action) => {
-	// getAllFoodsReducer is the reducer name
 	switch (action.type) {
 		case "GET_FOODS_REQUEST":
 			return {
