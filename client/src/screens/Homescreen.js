@@ -7,32 +7,31 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 
 export default function Homescreen() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const foodsstate = useSelector((state) => state.getAllFoodsReducer); // is used to pull the foods data from the Redux store (getAllFoodsReducer)
-  const { foods, error, loading } = foodsstate;
+	const foodsstate = useSelector((state) => state.getAllFoodsReducer); // is used to pull the foods data from the Redux store (getAllFoodsReducer)
+	const { foods, error, loading } = foodsstate;
 
-  useEffect(() => {
-    dispatch(getAllFoods());
-  }, []);
+	useEffect(() => {
+		dispatch(getAllFoods());
+	}, []);
 
-  return (
-    <div>
-      <div className="row justify-content-center">
-        {loading ? (
-          <Loading />
-        ) : error ? (
-          <Error error="Something went wrong" />
-        ) : (
-          foods.map((food) => {
-            return (
-              <div className="col-md-3 m-3" key={food._id}>
-                <Food food={food} />
-              </div>
-            );
-          })
-        )}
-      </div>
-    </div>
-  );
+	return (
+		<div>
+			<div className="row justify-content-center">
+				{loading ? (
+				<Loading />
+				) : error ? (
+				<Error error="Something went wrong" />
+				) : (
+				foods.map((food) => {
+					return (
+					<div className="col-md-3 m-3" key={food._id}>
+						<Food food={food} />
+					</div>
+					);
+				}))}
+			</div>
+		</div>
+	);
 }

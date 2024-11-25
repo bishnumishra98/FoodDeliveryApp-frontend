@@ -53,5 +53,5 @@ export default function Registerscreen() {
 				</div>
 			</div>
 		</div>
-  )
+  	)
 }
