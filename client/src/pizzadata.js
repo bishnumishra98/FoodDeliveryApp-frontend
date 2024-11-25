@@ -1,31 +1,19 @@
 // This is just a dummy static data for development purpose. No need to push it into Github repo.
-// There are multiple objects each containing different properties like 'name', 'varaints', 'prices', etc.
+// There are multiple objects each containing different properties like 'name', 'size', 'price', etc.
 
 const pizzas = [
   {
     name: "PEPPER BARBECUE CHICKEN",
-    variants: ["small", "medium", "large"],
-    prices: [
-      {
-        small: 200,
-        medium: 350,
-        large: 400,
-      },
-    ],
+    size: "regular",
+    price: "350",
     category: "nonveg",
     image: "https://www.dominos.co.in/files/items/Pepper_Barbeque.jpg",
     description: "Pepper Barbecue Chicken I Cheese",
   },
   {
     name: "Non Veg Supreme",
-    variants: ["small", "medium", "large"],
-    prices: [
-      {
-        small: 200,
-        medium: 350,
-        large: 400,
-      },
-    ],
+    size: "small",
+    price: "250",
     category: "nonveg",
     image: "https://www.dominos.co.in/files/items/Non-Veg_Supreme.jpg",
     description:
@@ -33,13 +21,8 @@ const pizzas = [
   },
   {
     name: "Golden Corn Pizza",
-    variants: ["small", "medium", "large"],
-    prices: [
-      {
-        small: 180,
-        medium: 250,
-      },
-    ],
+    size: "small",
+    price: "300",
     category: "veg",
     description:
       "Corn over the base makes it look beautiful. It is served with tomato sauce and chili flakes are sprinkled over the topping according the taste. After mixing all the ingredients, it is baked by adding cheese and corn for added flavor to pizza. Corn adds health and sweet taste to the pizza.",
@@ -47,14 +30,8 @@ const pizzas = [
   },
   {
     name: "Jalapeno & Red Paprika Pizza",
-    variants: ["small", "medium", "large"],
-    prices: [
-      {
-        small: 200,
-        medium: 300,
-        large: 420,
-      },
-    ],
+    size: "large",
+    price: "450",
     category: "veg",
     image: "https://www.crazymasalafood.com/wp-content/images/jalepeno.jpg",
     description:
@@ -62,14 +39,8 @@ const pizzas = [
   },
   {
     name: "Margerita",
-    variants: ["small", "medium", "large"],
-    prices: [
-      {
-        small: 150,
-        medium: 220,
-        large: 300,
-      },
-    ],
+    size: "medium",
+    price: "400",
     category: "veg",
     image:
       "https://cdn.loveandlemons.com/wp-content/uploads/2019/09/margherita-pizza-500x500.jpg",
@@ -78,17 +49,13 @@ const pizzas = [
   },
   {
     name: "Double Cheese Margherita Pizza",
-    variants: ["small", "medium", "large"],
-    prices: [
-      {
-        small: 250,
-        medium: 380,
-      },
-    ],
+    size: "large",
+    price: "550",
     category: "veg",
     image: "https://www.crazymasalafood.com/wp-content/images/double-1.jpg",
     description:
       "This is a plain pizza which have cheese on it which is margherita and is delicious because of the loads of cheese. After mixing all the ingredients, it is baked by adding the cheese as topping over it. The base is perfectly prepared by adding double layer of cheese over it",
   },
 ];
+
 export default pizzas;

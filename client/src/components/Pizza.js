@@ -5,7 +5,7 @@ import { addToCart } from '../actions/cartActions';
 
 export default function Pizza({pizza}) {
     const [quantity , setquantity] = useState(1);
-    const [variant , setvariant] = useState('small');
+    const [variant , setvariant] = useState('regular');
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
