@@ -1,3 +1,6 @@
+// This is just a dummy static data for development purpose. No need to push it into Github repo.
+// There are multiple objects each containing different properties like 'name', 'varaints', 'prices', etc.
+
 const pizzas = [
   {
     name: "PEPPER BARBECUE CHICKEN",
