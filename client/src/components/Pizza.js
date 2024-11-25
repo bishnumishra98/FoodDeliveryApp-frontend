@@ -5,14 +5,13 @@ import { addToCart } from '../actions/cartActions';
 
 export default function Pizza({pizza}) {
     const [quantity , setquantity] = useState(1);
-    const [variant , setvariant] = useState('regular');
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const dispatch = useDispatch();
     function addtocart() {
-        dispatch(addToCart(pizza, quantity, variant));
+        dispatch(addToCart(pizza, quantity));
     }
 
     return (
@@ -24,32 +23,44 @@ export default function Pizza({pizza}) {
 
             <div className="flex-container">
                 <div className='w-100 m-1'>
-                    <p>Variants</p>
-                    <select className='form-control' value={variant} onChange={(e) => {setvariant(e.target.value)}}>
-                        {pizza.variants.map((variant, index) => {
-                            // return <option value={variant}>{variant}</option>
-                            return <option value={variant} key={index}>{variant}</option>
-                        })}
-                    </select>
-                    
+                    <p className='mt-1'>Serving size: <br/> <span style={{color: 'grey'}}>{pizza.size}</span></p>
                 </div>
-                <div className='w-100 m-1'>
-                    <p>Quantity</p>
-                    <select className='form-control' value={quantity} onChange={(e) => {setquantity(e.target.value)}}>
+
+                {/* <div className='w-100 m-1' style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    <p style={{ marginRight: '10px', marginBottom: '0' }}>Quantity</p>
+                    <select className='form-control' value={quantity} onChange={(e) => {setquantity(e.target.value)}} style={{width: '60px'}}>
                         {[...Array(10).keys()].map((x, i) => {
                             return <option value={i+1} key={i}>{i+1}</option>
                         })}
                     </select>
+                </div> */}
+
+                <div className='w-100 m-1' style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    <p style={{marginRight: '10px', marginBottom: '0'}}>Quantity</p>
+                    <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+                        <button 
+                            onClick={() => setquantity(prev => prev > 1 ? prev - 1 : 1)} 
+                            className="quantity-btn"
+                        >
+                            -
+                        </button>
+                        <span style={{ margin: '0 10px', fontSize: '16px' }}>{quantity}</span>
+                        <button 
+                            onClick={() => setquantity(prev => prev + 1)} 
+                            className="quantity-btn"
+                        >
+                            +
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <div className="flex-container">
                 <div className='m-1 w-100'>
-                    <h1 className='mt-1'>Price: ₹{pizza.prices[0][variant] * quantity}</h1>
-                    {/* <h1 className='mt-1'>Price: ₹{pizza?.prices?.[0]?.[variant] * quantity || -1}</h1> */}
+                    <h5 className='mt-1'>Price: <span style={{color: '#555555'}}>₹{pizza.price * quantity}</span></h5>
                 </div>
                 <div className='m-1 w-100'>
-                    <button className="btn" onClick={addtocart}>ADD TO CART</button>
+                    <button className="btn" onClick={addtocart} style={{ fontSize: '15px', padding: '5px 15px' }}>ADD TO CART</button>
                 </div>
             </div>
 
@@ -65,6 +76,22 @@ export default function Pizza({pizza}) {
                     <button className='btn' onClick={handleClose}>CLOSE</button>
                 </Modal.Footer>
             </Modal>
+
+            {/* Internal CSS for - + buttons */}
+            <style jsx>{`
+                .quantity-btn {
+                    padding: 3px 3px;
+                    font-size: 20px;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                    color: #e91e63;
+                    font-weight: bold;
+                }
+                .quantity-btn:hover {
+                    color: #0056b3;
+                }
+            `}</style>
         </div>
     )
 }
