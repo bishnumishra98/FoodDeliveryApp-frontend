@@ -26,15 +26,6 @@ export default function Pizza({pizza}) {
                     <p className='mt-1'>Serving size: <br/> <span style={{color: 'grey'}}>{pizza.size}</span></p>
                 </div>
 
-                {/* <div className='w-100 m-1' style={{ display: 'inline-flex', alignItems: 'center' }}>
-                    <p style={{ marginRight: '10px', marginBottom: '0' }}>Quantity</p>
-                    <select className='form-control' value={quantity} onChange={(e) => {setquantity(e.target.value)}} style={{width: '60px'}}>
-                        {[...Array(10).keys()].map((x, i) => {
-                            return <option value={i+1} key={i}>{i+1}</option>
-                        })}
-                    </select>
-                </div> */}
-
                 <div className='w-100 m-1' style={{ display: 'inline-flex', alignItems: 'center' }}>
                     <p style={{marginRight: '10px', marginBottom: '0'}}>Quantity</p>
                     <div style={{ display: 'inline-flex', alignItems: 'center' }}>
