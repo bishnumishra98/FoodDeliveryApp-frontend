@@ -20,9 +20,9 @@ export default function Cartscreen() {
                                 <h1>{item.name} [{item.variant}]</h1>
                                 <h1>Price: {item.quantity} &times; ₹{item.price} = ₹{item.quantity * item.price}</h1>
                                 <h1 style={{display: 'inline'}}>Quantity: </h1>
-                                <i className="fa-solid fa-plus" onClick={() => {dispatch(addToCart(item, item.quantity+1))}}></i>
-                                <b>{item.quantity}</b>
                                 <i className="fa-solid fa-minus" onClick={() => {dispatch(addToCart(item, item.quantity-1))}}></i>
+                                <b>{item.quantity}</b>
+                                <i className="fa-solid fa-plus" onClick={() => {dispatch(addToCart(item, item.quantity+1))}}></i>
                                 <hr />
                             </div>
                             <div className='m-1 w-100'>
