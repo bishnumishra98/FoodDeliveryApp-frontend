@@ -9,9 +9,7 @@ export const cartReducer = (state={cartItems: []}, action) => {
         if (alreadyExists) {
             return {
                 ...state,
-                cartItems: state.cartItems.map(item => 
-                    item._id === action.payload._id ? action.payload : item
-                )
+                cartItems: state.cartItems.map(item => item._id === action.payload._id ? action.payload : item)
             };
         } else {
             return {
@@ -24,9 +22,7 @@ export const cartReducer = (state={cartItems: []}, action) => {
         case 'DELETE_FROM_CART' : 
         return {
             ...state,
-            cartItems: state.cartItems.filter(item => 
-                item._id !== action.payload._id || item.variant !== action.payload.variant
-            )
+            cartItems: state.cartItems.filter(item => item._id !== action.payload._id)
         };
 
         
