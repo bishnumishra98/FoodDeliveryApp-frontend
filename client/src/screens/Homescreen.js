@@ -13,7 +13,7 @@ export default function Homescreen() {
 	const { foods, error, loading } = foodsstate;
 
 	useEffect(() => {
-		dispatch(getAllFoods());
+		dispatch(getAllFoods());   // dispatching the action 'getAllFoods'
 	}, []);
 
 	return (
