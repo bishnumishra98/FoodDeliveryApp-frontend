@@ -9,7 +9,7 @@ import Error from "../components/Error";
 export default function Homescreen() {
 	const dispatch = useDispatch();
 
-	const foodsstate = useSelector((state) => state.getAllFoodsReducer); // is used to pull the foods data from the Redux store (getAllFoodsReducer)
+	const foodsstate = useSelector((state) => state.getAllFoodsReducer);   // is used to pull the foods data from the Redux store (getAllFoodsReducer)
 	const { foods, error, loading } = foodsstate;
 
 	useEffect(() => {
