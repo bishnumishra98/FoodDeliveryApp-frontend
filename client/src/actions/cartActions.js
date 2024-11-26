@@ -1,12 +1,11 @@
-export const addToCart = (food, quantity, variant) => (dispatch, getState) => {
+export const addToCart = (food, quantity) => (dispatch, getState) => {
 	var cartItem = {
 		name: food.name,
 		_id: food._id,
 		image: food.image,
-		variant: variant,
+		size: food.size,
 		quantity: Number(quantity),
-		prices: food.prices,
-		price: Number(food.prices[0][variant]),
+		price: food.price,
 	};
 
 	if (cartItem.quantity > 10) {

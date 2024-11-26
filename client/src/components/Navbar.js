@@ -21,7 +21,7 @@ const Navbar = () => {
 					{/* Add 'ms-auto' class to align nav items to the left */}
 					<ul className="navbar-nav ms-auto">
 						{currentUser ? (
-						<div class="dropdown mt-2">
+						<div className="dropdown mt-2">
 							<a
 							className="dropdown-toggle"
 							style={{ color: "black", textDecoration: "none" }}
