@@ -21,13 +21,13 @@ export const loginUserReducer = (state={} , action) => {
             loading: true
         }
         case 'USER_LOGIN_SUCCESS' : return {
-          loading: false,
-          success: true,
-          currentUser: action.payload   // stores the logged-in user's data
+            loading: false,
+            success: true,
+            currentUser: action.payload   // stores the logged-in user's data
       }
       case 'USER_LOGIN_FAILED' : return {
-          loading: false,
-          error: action.payload
+            loading: false,
+            error: action.payload
       }
       default: return state
     }
