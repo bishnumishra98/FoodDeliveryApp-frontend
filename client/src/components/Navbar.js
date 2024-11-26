@@ -11,7 +11,7 @@ const Navbar = () => {
 	const dispatch = useDispatch();
 
 	return (
-		<nav className="navbar navbar-expand-lg bg-body-tertiary shadow-lg p-3 mb-5 bg-white rounded">
+		<nav className="navbar navbar-expand-lg bg-body-tertiary shadow-lg p-2 mb-5 bg-white rounded" style={{ position: "sticky", top: 0, zIndex: 1000 }}>
 			<div className="container-fluid">
 				<a className="navbar-brand" href="/">Food Delivery App</a>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
