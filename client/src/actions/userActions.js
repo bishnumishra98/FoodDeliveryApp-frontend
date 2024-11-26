@@ -12,7 +12,7 @@ export const registerUser = (user) => async dispatch => {
     }
 }
 
-export const loginUser=(user)=>async dispatch=>{
+export const loginUser = (user) => async dispatch => {
     dispatch({type:'USER_LOGIN_REQUEST'});
 
     try {
