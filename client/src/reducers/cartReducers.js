@@ -4,13 +4,13 @@ export const cartReducer = (state={cartItems: []}, action) => {
         
         // If an item is already present in the cart, and the user clicks to add that item again from the Homescreen,
         // then update that item in the cart, instead of creating the new same item in the cart.
-        const alreadyExists = state.cartItems.find(item => item._id === action.payload._id && item.variant === action.payload.variant);
+        const alreadyExists = state.cartItems.find(item => item._id === action.payload._id);
 
         if (alreadyExists) {
             return {
                 ...state,
                 cartItems: state.cartItems.map(item => 
-                    item._id === action.payload._id && item.variant === action.payload.variant ? action.payload : item
+                    item._id === action.payload._id ? action.payload : item
                 )
             };
         } else {
