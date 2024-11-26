@@ -93,8 +93,8 @@ export default function Food({ food }) {
 				</Modal.Footer>
 			</Modal>
 
-			{/* Internal CSS for - + buttons */}
-			<style jsx>{`
+			{/* Internal CSS */}
+			<style> {`
 				.quantity-btn {
 					padding: 3px 3px;
 					font-size: 20px;
@@ -107,7 +107,7 @@ export default function Food({ food }) {
 				.quantity-btn:hover {
 					color: #0056b3;
 				}
-			`}</style>
+			`} </style>
 		</div>
 	);
 }
