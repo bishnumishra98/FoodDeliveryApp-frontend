@@ -25,3 +25,9 @@ export const loginUser = (user) => async dispatch => {
         dispatch({type:'USER_LOGIN_FAILED', payload: error});
     }
 }
+
+// When user logout, remove it from localstorage and direct them to login page.
+export const logoutUser = () => dispatch => {
+    localStorage.removeItem('currentUser');
+    window.location.href = '/login';
+}
