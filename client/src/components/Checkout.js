@@ -7,6 +7,7 @@ import { placeOrder } from '../actions/orderActions'
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
+
 export default function Checkout({subtotal}) {
 
     const orderstate = useSelector((state) => state.placeOrderReducer)
