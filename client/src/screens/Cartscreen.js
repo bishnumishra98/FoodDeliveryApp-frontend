@@ -41,8 +41,9 @@ export default function Cartscreen() {
                 {total > 0 && (
                     <div className="col-md-4 text-end">
                         <h2 style={{fontSize: '45px'}}>Total: ₹{total}</h2>
-                        {/* <button className='btn' style={{fontSize: '20px'}}>Place order</button> */}
-                        <Checkout subtotal={total} />
+                        <button className='btn' style={{fontSize: '20px'}}>Place order</button>
+                        {/* comment the above line, and uncomment the below line when you integrate Razorpay */}
+                        {/* <Checkout subtotal={total} /> */}
                     </div>
                 )}
             </div>
