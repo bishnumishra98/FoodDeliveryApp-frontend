@@ -1,52 +1,53 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../actions/cartActions";
 
 export default function Food({ food }) {
-	const [quantity, setquantity] = useState(1);
+	const [quantity, setQuantity] = useState(1);
 	const [show, setShow] = useState(false);
+
+	const dispatch = useDispatch();
+
+	// Add to Cart Handler
+	const handleAddToCart = () => {
+		dispatch(addToCart(food, quantity));
+	};
+
+	// Modal Handlers
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const dispatch = useDispatch();
-	function addtocart() {
-		dispatch(addToCart(food, quantity));
-	}
-
 	return (
-		<div className="shadow-lg p-3 mb-5 bg-white rounded">
-			<div onClick={handleShow}>
+		<div className="food-card shadow-lg p-3 mb-5 bg-white rounded">
+			<div className="food-header" onClick={handleShow}>
 				<h1>{food.name}</h1>
 				<img
 					src={food.image}
-					alt="food-image"
-					style={{ height: "200px", width: "200px" }}
+					alt="food"
+					className="food-image"
 				/>
 			</div>
 
 			<div className="flex-container">
-				<div className="w-100 m-1">
-					<p className="mt-1">
-						Serving size: <br />{" "}
-						<span style={{ color: "grey" }}>{food.size}</span>
+				<div className="m-1 w-100">
+					<p>
+						<strong>Serving size:</strong> <br />
+						<span className="text-muted">{food.size}</span>
 					</p>
 				</div>
-
-				<div className="w-100 m-1" style={{ display: "inline-flex", alignItems: "center" }}>
-					<p style={{ marginRight: "10px", marginBottom: "0" }}>Quantity</p>
-					<div style={{ display: "inline-flex", alignItems: "center" }}>
+				<div className="m-1 w-100 quantity-control">
+					<p>Quantity:</p>
+					<div className="quantity-buttons">
 						<button
-							onClick={() => setquantity((prev) => (prev > 1 ? prev - 1 : 1))}
+							onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
 							className="quantity-btn"
 						>
 							-
 						</button>
-						<span style={{ margin: "0 10px", fontSize: "16px" }}>
-							{quantity}
-						</span>
+						<span className="quantity-value">{quantity}</span>
 						<button
-							onClick={() => setquantity((prev) => prev + 1)}
+							onClick={() => setQuantity((prev) => prev + 1)}
 							className="quantity-btn"
 						>
 							+
@@ -57,22 +58,21 @@ export default function Food({ food }) {
 
 			<div className="flex-container">
 				<div className="m-1 w-100">
-					<h5 className="mt-1">
-						Price:{" "}
-						<span style={{ color: "#555555" }}>₹{food.price * quantity}</span>
+					<h5>
+						<strong>Price:</strong> ₹{food.price * quantity}
 					</h5>
 				</div>
 				<div className="m-1 w-100">
 					<button
-						className="btn"
-						onClick={addtocart}
-						style={{ fontSize: "15px", padding: "5px 15px" }}
+						className="add-to-cart-btn"
+						onClick={handleAddToCart}
 					>
 						ADD TO CART
 					</button>
 				</div>
 			</div>
 
+			{/* Modal */}
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title>{food.name}</Modal.Title>
@@ -80,14 +80,13 @@ export default function Food({ food }) {
 				<Modal.Body>
 					<img
 						src={food.image}
-						alt="food-image"
+						alt="food"
 						className="img-fluid"
-						style={{ height: "400px" }}
 					/>
 					<p>{food.description}</p>
 				</Modal.Body>
 				<Modal.Footer>
-					<button className="btn" onClick={handleClose}>
+					<button className="close-modal-btn" onClick={handleClose}>
 						CLOSE
 					</button>
 				</Modal.Footer>
@@ -95,17 +94,73 @@ export default function Food({ food }) {
 
 			{/* Internal CSS */}
 			<style> {`
-				.quantity-btn {
-					padding: 3px 3px;
-					font-size: 20px;
+				.food-card {
+					text-align: center;
+					border-radius: 10px;
+				}
+				.food-header img {
+					height: 200px;
+					width: 200px;
 					cursor: pointer;
-					background-color: transparent;
-					border: none;
-					color: #e91e63;
+					transition: transform 0.3s;
+				}
+				.food-header img:hover {
+					transform: scale(1.1);
+				}
+				.quantity-control {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+				}
+				.quantity-buttons {
+					display: flex;
+					align-items: center;
+				}
+				.quantity-btn {
+					padding: 5px 10px;
+					font-size: 18px;
 					font-weight: bold;
+					border: none;
+					background: #f8f9fa;
+					cursor: pointer;
+					border-radius: 5px;
+					color: #dc3545;
+					transition: background-color 0.3s, color 0.3s;
 				}
 				.quantity-btn:hover {
-					color: #0056b3;
+					background-color: #dc3545;
+					color: white;
+				}
+				.quantity-value {
+					margin: 0 10px;
+					font-size: 16px;
+				}
+				.add-to-cart-btn {
+					background-color: #28a745;
+					color: white;
+					padding: 10px 20px;
+					font-size: 16px;
+					border: none;
+					border-radius: 5px;
+					box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+					cursor: pointer;
+					transition: background-color 0.3s, box-shadow 0.3s;
+				}
+				.add-to-cart-btn:hover {
+					background-color: #218838;
+					box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+				}
+				.close-modal-btn {
+					background-color: #dc3545;
+					color: white;
+					border: none;
+					padding: 8px 20px;
+					border-radius: 5px;
+					cursor: pointer;
+					transition: background-color 0.3s;
+				}
+				.close-modal-btn:hover {
+					background-color: #c82333;
 				}
 			`} </style>
 		</div>

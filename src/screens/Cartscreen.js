@@ -40,10 +40,8 @@ export default function Cartscreen() {
                 {/* Only show this block, when something is added in the cart, i.e., total > 0 */}
                 {total > 0 && (
                     <div className="col-md-4 text-end">
-                        <h2 style={{fontSize: '45px'}}>Total: ₹{total}</h2>
-                        <button className='btn' style={{fontSize: '20px'}}>Place order</button>
-                        {/* comment the above line, and uncomment the below line when you integrate Razorpay */}
-                        {/* <Checkout subtotal={total} /> */}
+                        <h2 style={{fontSize: '35px', fontWeight: 'bold'}}>Total: ₹{total}</h2>
+                        <Checkout subtotal={total} />
                     </div>
                 )}
             </div>

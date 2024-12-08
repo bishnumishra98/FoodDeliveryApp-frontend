@@ -1,18 +1,27 @@
 import axios from "axios";
 const reactappbackendurl = process.env.REACT_APP_BACKEND_URL;
 
-export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
+export const placeOrder = (subtotal, shippingAddress) => async (dispatch, getState) => {
     dispatch({ type: "PLACE_ORDER_REQUEST" });
     const currentUser = getState().loginUserReducer.currentUser;
     const cartItems = getState().cartReducer.cartItems;
 
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/orders/placeorder`, { token, subtotal, currentUser, cartItems });
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/orders/placeorder`, {
+            subtotal,
+            currentUser,
+            cartItems,
+            shippingAddress,
+        });
+
+        if (response.data.paymentUrl) {
+            window.location.href = response.data.paymentUrl; // Redirect to PhonePe's payment page
+        }
+
         dispatch({ type: "PLACE_ORDER_SUCCESS" });
-        console.log(response);
     } catch (error) {
         dispatch({ type: "PLACE_ORDER_FAILED" });
-        console.log(error);
+        console.error(error);
     }
 };
 
