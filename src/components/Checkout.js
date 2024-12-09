@@ -16,7 +16,7 @@ export default function Checkout({ subtotal }) {
         contact: "",
         street: "",
         city: "",
-        country: "",
+        state: "",
         pincode: "",
     });
 
@@ -29,11 +29,29 @@ export default function Checkout({ subtotal }) {
         setShowForm(true);
     };
 
-    const handlePayment = () => {
-        console.log("subtotal:", subtotal);
-        console.log("deliveryaddress:", deliveryAddress);
-        dispatch(placeOrder(subtotal, deliveryAddress));
+    // Function to check if user is entering a valid phone number and pincode
+    const validateInputs = () => {
+        const phoneRegex = /^[0-9]{10}$/;   // 10-digit phone number
+        const pincodeRegex = /^[0-9]{6}$/;   // 6-digit pincode
+        if (!phoneRegex.test(deliveryAddress.contact)) {
+            alert("Please enter a valid 10-digit contact number.");
+            return false;
+        }
+        if (!pincodeRegex.test(deliveryAddress.pincode)) {
+            alert("Please enter a valid 6-digit pincode.");
+            return false;
+        }
+        return true;
     };
+      
+    const handlePayment = () => {
+        if (validateInputs()) {
+            console.log("subtotal:", subtotal);
+            console.log("deliveryaddress:", deliveryAddress);
+            dispatch(placeOrder(subtotal, deliveryAddress));
+        }
+    };
+      
 
     return (
         <div>
@@ -127,60 +145,60 @@ export default function Checkout({ subtotal }) {
             </div>
         ) : (
             <div className="form-container">
-            <h2>Delivery address</h2>
+                <h2>Delivery address</h2>
 
-            <input
-                type="text"
-                placeholder="Customer Name"
-                name="name"
-                value={deliveryAddress.name}
-                onChange={handleInputChange}
-                className="form-input"
-            />
-            <input
-                type="text"
-                placeholder="Contact number"
-                name="contact"
-                value={deliveryAddress.contact}
-                onChange={handleInputChange}
-                className="form-input"
-            />
-            <input
-                type="text"
-                placeholder="Street"
-                name="street"
-                value={deliveryAddress.street}
-                onChange={handleInputChange}
-                className="form-input"
-            />
-            <input
-                type="text"
-                placeholder="City"
-                name="city"
-                value={deliveryAddress.city}
-                onChange={handleInputChange}
-                className="form-input"
-            />
-            <input
-                type="text"
-                placeholder="Country"
-                name="country"
-                value={deliveryAddress.country}
-                onChange={handleInputChange}
-                className="form-input"
-            />
-            <input
-                type="text"
-                placeholder="Pincode"
-                name="pincode"
-                value={deliveryAddress.pincode}
-                onChange={handleInputChange}
-                className="form-input"
-            />
+                <input
+                    type="text"
+                    placeholder="Customer Name"
+                    name="name"
+                    value={deliveryAddress.name}
+                    onChange={handleInputChange}
+                    className="form-input"
+                />
+                <input
+                    type="text"
+                    placeholder="Contact number"
+                    name="contact"
+                    value={deliveryAddress.contact}
+                    onChange={handleInputChange}
+                    className="form-input"
+                />
+                <input
+                    type="text"
+                    placeholder="Street"
+                    name="street"
+                    value={deliveryAddress.street}
+                    onChange={handleInputChange}
+                    className="form-input"
+                />
+                <input
+                    type="text"
+                    placeholder="City"
+                    name="city"
+                    value={deliveryAddress.city}
+                    onChange={handleInputChange}
+                    className="form-input"
+                />
+                <input
+                    type="text"
+                    placeholder="State"
+                    name="state"
+                    value={deliveryAddress.state}
+                    onChange={handleInputChange}
+                    className="form-input"
+                />
+                <input
+                    type="text"
+                    placeholder="Pincode"
+                    name="pincode"
+                    value={deliveryAddress.pincode}
+                    onChange={handleInputChange}
+                    className="form-input"
+                />
 
-            <button className="btn-success" onClick={handlePayment}>
-                Continue order
-            </button>
+                <button className="btn-success" onClick={handlePayment}>
+                    Continue order
+                </button>
             </div>
         )}
         </div>
