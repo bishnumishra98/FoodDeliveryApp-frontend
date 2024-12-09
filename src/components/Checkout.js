@@ -13,6 +13,7 @@ export default function Checkout({ subtotal }) {
     const [showForm, setShowForm] = useState(false);
     const [deliveryAddress, setDeliveryAddress] = useState({
         name: "",
+        contact: "",
         street: "",
         city: "",
         country: "",
@@ -133,6 +134,14 @@ export default function Checkout({ subtotal }) {
                 placeholder="Customer Name"
                 name="name"
                 value={deliveryAddress.name}
+                onChange={handleInputChange}
+                className="form-input"
+            />
+            <input
+                type="text"
+                placeholder="Contact number"
+                name="contact"
+                value={deliveryAddress.contact}
                 onChange={handleInputChange}
                 className="form-input"
             />
