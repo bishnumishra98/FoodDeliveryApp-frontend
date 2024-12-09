@@ -1,7 +1,7 @@
 import axios from "axios";
 const reactappbackendurl = process.env.REACT_APP_BACKEND_URL;
 
-export const placeOrder = (subtotal, shippingAddress) => async (dispatch, getState) => {
+export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getState) => {
     dispatch({ type: "PLACE_ORDER_REQUEST" });
     const currentUser = getState().loginUserReducer.currentUser;
     const cartItems = getState().cartReducer.cartItems;
@@ -11,7 +11,7 @@ export const placeOrder = (subtotal, shippingAddress) => async (dispatch, getSta
             subtotal,
             currentUser,
             cartItems,
-            shippingAddress,
+            deliveryAddress,
         });
 
         if (response.data.paymentUrl) {

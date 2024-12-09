@@ -11,7 +11,7 @@ export default function Checkout({ subtotal }) {
     const { loading, error, success } = orderState;
 
     const [showForm, setShowForm] = useState(false);
-    const [shippingAddress, setShippingAddress] = useState({
+    const [deliveryAddress, setDeliveryAddress] = useState({
         name: "",
         street: "",
         city: "",
@@ -21,7 +21,7 @@ export default function Checkout({ subtotal }) {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setShippingAddress((prev) => ({ ...prev, [name]: value }));
+        setDeliveryAddress((prev) => ({ ...prev, [name]: value }));
     };
 
     const handlePlaceOrderClick = () => {
@@ -29,17 +29,17 @@ export default function Checkout({ subtotal }) {
     };
 
     const handlePayment = () => {
-        dispatch(placeOrder(subtotal, shippingAddress));
+        dispatch(placeOrder(subtotal, deliveryAddress));
     };
 
     return (
         <div>
-            {loading && <Loading />}
-            {error && <Error error="Something went wrong" />}
-            {success && <Success success="Order placed successfully" />}
+        {loading && <Loading />}
+        {error && <Error error="Something went wrong" />}
+        {success && <Success success="Order placed successfully" />}
 
-            <style>
-                {`
+        <style>
+            {`
                 .checkout-container {
                     display: flex;
                     flex-direction: column;
@@ -110,65 +110,68 @@ export default function Checkout({ subtotal }) {
                 .btn-success:hover {
                     background-color: #218838;
                 }
-                `}
-            </style>
+            `}
+        </style>
 
-            {!showForm ? (
-                <div className="checkout-container">
-                    <button className="btn-primary-custom" onClick={handlePlaceOrderClick}>
-                        Place Order
-                    </button>
-                </div>
-            ) : (
-                <div className="form-container">
-                    <h2>Shipping Address</h2>
+        {!showForm ? (
+            <div className="checkout-container">
+            <button
+                className="btn-primary-custom"
+                onClick={handlePlaceOrderClick}
+            >
+                Place Order
+            </button>
+            </div>
+        ) : (
+            <div className="form-container">
+            <h2>Delivery address</h2>
 
-                    <input
-                        type="text"
-                        placeholder="Customer Name"
-                        name="name"
-                        value={shippingAddress.name}
-                        onChange={handleInputChange}
-                        className="form-input"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Street"
-                        name="street"
-                        value={shippingAddress.street}
-                        onChange={handleInputChange}
-                        className="form-input"
-                    />
-                    <input
-                        type="text"
-                        placeholder="City"
-                        name="city"
-                        value={shippingAddress.city}
-                        onChange={handleInputChange}
-                        className="form-input"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Country"
-                        name="country"
-                        value={shippingAddress.country}
-                        onChange={handleInputChange}
-                        className="form-input"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Pincode"
-                        name="pincode"
-                        value={shippingAddress.pincode}
-                        onChange={handleInputChange}
-                        className="form-input"
-                    />
+            <input
+                type="text"
+                placeholder="Customer Name"
+                name="name"
+                value={deliveryAddress.name}
+                onChange={handleInputChange}
+                className="form-input"
+            />
+            <input
+                type="text"
+                placeholder="Street"
+                name="street"
+                value={deliveryAddress.street}
+                onChange={handleInputChange}
+                className="form-input"
+            />
+            <input
+                type="text"
+                placeholder="City"
+                name="city"
+                value={deliveryAddress.city}
+                onChange={handleInputChange}
+                className="form-input"
+            />
+            <input
+                type="text"
+                placeholder="Country"
+                name="country"
+                value={deliveryAddress.country}
+                onChange={handleInputChange}
+                className="form-input"
+            />
+            <input
+                type="text"
+                placeholder="Pincode"
+                name="pincode"
+                value={deliveryAddress.pincode}
+                onChange={handleInputChange}
+                className="form-input"
+            />
 
-                    <button className="btn-success" onClick={handlePayment}>
-                        Continue order
-                    </button>
-                </div>
-            )}
+            <button className="btn-success" onClick={handlePayment}>
+                Continue order
+            </button>
+            </div>
+        )}
         </div>
     );
 }
