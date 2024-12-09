@@ -165,7 +165,7 @@ export default function Checkout({ subtotal }) {
                     />
 
                     <button className="btn-success" onClick={handlePayment}>
-                        Confirm Order
+                        Continue order
                     </button>
                 </div>
             )}
