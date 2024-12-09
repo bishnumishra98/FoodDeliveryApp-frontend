@@ -29,6 +29,8 @@ export default function Checkout({ subtotal }) {
     };
 
     const handlePayment = () => {
+        console.log("subtotal:", subtotal);
+        console.log("deliveryaddress:", deliveryAddress);
         dispatch(placeOrder(subtotal, deliveryAddress));
     };
 

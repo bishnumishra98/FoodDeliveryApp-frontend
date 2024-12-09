@@ -18,7 +18,7 @@ export default function Cartscreen() {
                     {total <= 0 && <h4 style={{ color: "darkgray" }}>Your Cart is empty</h4>}
                     {cartItems.map(item => {
                         return (
-                            <div className="flex-container" key={item.id}>
+                            <div className="flex-container" key={item._id}>
                                 <div className='text-start m-1 w-100'>
                                     <h1>{item.name} [{item.variant}]</h1>
                                     <h1>Price: {item.quantity} &times; ₹{item.price} = ₹{item.quantity * item.price}</h1>
