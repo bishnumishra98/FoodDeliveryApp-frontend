@@ -14,9 +14,9 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
             deliveryAddress,
         });
 
-        if (response.data.paymentUrl) {
-            window.location.href = response.data.paymentUrl; // Redirect to PhonePe's payment page
-        }
+        // if (response.data.paymentUrl) {
+        //     window.location.href = response.data.paymentUrl; // Redirect to PhonePe's payment page
+        // }
 
         dispatch({ type: "PLACE_ORDER_SUCCESS" });
     } catch (error) {
