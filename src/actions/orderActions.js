@@ -8,9 +8,9 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
 
     try {
         const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/orders/placeorder`, {
-            subtotal,
             currentUser,
             cartItems,
+            subtotal,
             deliveryAddress,
         });
 
@@ -21,7 +21,7 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
         dispatch({ type: "PLACE_ORDER_SUCCESS" });
     } catch (error) {
         dispatch({ type: "PLACE_ORDER_FAILED" });
-        console.error(error);
+        console.log(error);
     }
 };
 
