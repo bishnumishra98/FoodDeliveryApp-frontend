@@ -34,7 +34,7 @@ const Navbar = () => {
 								{currentUser.name}
 							</a>
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a className="dropdown-item" href="#">My orders</a>
+								<a className="dropdown-item" href="/orders">My orders</a>
 								<a className="dropdown-item" href="#" onClick={() => {dispatch(logoutUser());}}><li>Logout</li></a>
 							</div>
 						</div>
