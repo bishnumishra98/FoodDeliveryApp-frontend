@@ -22,7 +22,7 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
             window.location.href = response.data.data.instrumentResponse.redirectInfo.url;   // redirect to PhonePe's payment page
         }
 
-        dispatch({ type: "PLACE_ORDER_SUCCESS" });
+        // dispatch({ type: "PLACE_ORDER_SUCCESS" });
     } catch (error) {
         dispatch({ type: "PLACE_ORDER_FAILED" });
         console.log(error);
