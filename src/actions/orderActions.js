@@ -7,6 +7,7 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
     const cartItems = getState().cartReducer.cartItems;
 
     try {
+        // API call to initiate the order and get the payment URL
         const response = await axios.post(`${reactappbackendurl}/api/orders/placeorder`, {
             currentUser,
             cartItems,
@@ -14,15 +15,13 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
             deliveryAddress,
         });
 
-        // If initiate payment request to PhonePe is successful, then we get PhonePe's payment page url in response
-        // if (response.data.paymentUrl) {
-        //     window.location.href = response.data.paymentUrl;   // Redirect to PhonePe's payment page
-        // }
-        if (response.data.success) {
-            window.location.href = response.data.data.instrumentResponse.redirectInfo.url;   // redirect to PhonePe's payment page
+        // If initiate payment request to PhonePe is successful, then redirect to PhonePe's payment page url which we get in response
+        if (response.data.success) {            
+            window.location.href = response.data.data.instrumentResponse.redirectInfo.url;   // Redirect to PhonePe's payment page
+        } else {
+            dispatch({ type: "PLACE_ORDER_FAILED" });
+            console.log("Payment URL not received in response.");
         }
-
-        // dispatch({ type: "PLACE_ORDER_SUCCESS" });
     } catch (error) {
         dispatch({ type: "PLACE_ORDER_FAILED" });
         console.log(error);
