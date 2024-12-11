@@ -31,7 +31,7 @@ const Navbar = () => {
 							aria-haspopup="true"
 							aria-expanded="false"
 							>
-								{currentUser.name}
+								{currentUser.name.split(" ")[0]}
 							</a>
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<a className="dropdown-item" href="/orders">My orders</a>
