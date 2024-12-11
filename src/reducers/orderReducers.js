@@ -1,4 +1,4 @@
-export const placeOrderReducer =(state={} , action) =>{
+export const placeOrderReducer = (state={} , action) => {
     switch(action.type) {
         case 'PLACE_ORDER_REQUEST' : return {
             loading : true
@@ -16,7 +16,7 @@ export const placeOrderReducer =(state={} , action) =>{
 }
 
 
-export const getUserOrdersReducer=(state={oredrs : []} , action)=>{
+export const getUserOrdersReducer = (state={oredrs : []} , action) => {
     switch(action.type) {
         case 'GET_USER_ORDERS_REQUEST' : return {
             loading : true,
@@ -35,7 +35,7 @@ export const getUserOrdersReducer=(state={oredrs : []} , action)=>{
 }
 
 
-export const getAllOrdersReducer=(state={oredrs : []} , action)=>{
+export const getAllOrdersReducer = (state={oredrs : []} , action) => {
     switch(action.type) {
         case 'GET_ALLORDERS_REQUEST' : return {
             loading : true,
