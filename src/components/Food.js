@@ -18,20 +18,20 @@ export default function Food({ food }) {
     // Add to Cart Handler
     const handleAddToCart = () => {
         if (quantity === 0) {
-            dispatch(addToCart(food, 1)); // Add to cart with quantity 1
+            dispatch(addToCart(food, 1));   // add to cart with quantity 1
         }
     };
 
     // Quantity Handlers
     const incrementQuantity = () => {
-        dispatch(addToCart(food, quantity + 1)); // Dispatch updated quantity
+        dispatch(addToCart(food, quantity + 1));   // dispatch updated quantity
     };
 
     const decrementQuantity = () => {
         if (quantity > 1) {
-            dispatch(addToCart(food, quantity - 1)); // Dispatch updated quantity
+            dispatch(addToCart(food, quantity - 1));   // dispatch updated quantity
         } else {
-            dispatch(addToCart(food, 0)); // Remove item from cart
+            dispatch(addToCart(food, 0));   // remove item from cart
         }
     };
 
