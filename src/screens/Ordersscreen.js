@@ -70,7 +70,7 @@ export default function Ordersscreen() {
                                         <p>{item.name} &times; {item.quantity} = <strong>&#8377;{item.price}</strong></p>
                                     </div>
                                 ))}
-                                <p style={{ fontWeight: 'bold', fontSize: '16px' }}>Total : &#8377;{order.orderAmount}</p>
+                                <p style={{ fontWeight: 'bold', fontSize: '16px' }}>Total: &#8377;{order.orderAmount}</p>
                             </div>
                             <div className='text-left w-100 mb-3' style={{ marginRight: '20px' }}>
                                 <h3 style={{ fontSize: '20px', marginBottom: '10px', color: '#007bff' }}><strong>Delivery address</strong></h3>
@@ -80,9 +80,9 @@ export default function Ordersscreen() {
                             <div className='text-left w-100'>
                                 <h3 style={{ fontSize: '20px', marginBottom: '10px', color: '#007bff' }}><strong>Order details</strong></h3>
                                 <hr style={{ borderColor: '#ddd' }} />
-                                <p><strong>Customer Name:</strong> {order.deliveryAddress.name}</p>
-                                <p><strong>Contact Number:</strong> {order.deliveryAddress.contact}</p>
-                                <p><strong>Date & Time:</strong> {getDate(order.createdAt)} & {getTime(order.createdAt)}</p>
+                                <p><strong>Customer name:</strong> {order.deliveryAddress.name}</p>
+                                <p><strong>Contact number:</strong> {order.deliveryAddress.contact}</p>
+                                <p><strong>Date & time:</strong> {getDate(order.createdAt)} & {getTime(order.createdAt)}</p>
                                 <p><strong>Order ID:</strong> {order._id}</p>
                                 <p><strong>Transaction ID:</strong> {order.transactionId}</p>
                             </div>
