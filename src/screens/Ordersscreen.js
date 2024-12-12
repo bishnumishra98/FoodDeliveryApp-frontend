@@ -73,12 +73,12 @@ export default function Ordersscreen() {
                                 <p style={{ fontWeight: 'bold', fontSize: '16px' }}>Total : &#8377;{order.orderAmount}</p>
                             </div>
                             <div className='text-left w-100 mb-3' style={{ marginRight: '20px' }}>
-                                <h3 style={{ fontSize: '20px', marginBottom: '10px', color: '#007bff' }}><strong>Delivery Address</strong></h3>
+                                <h3 style={{ fontSize: '20px', marginBottom: '10px', color: '#007bff' }}><strong>Delivery address</strong></h3>
                                 <hr style={{ borderColor: '#ddd' }} />
                                 <p>{order.deliveryAddress.street}, {order.deliveryAddress.city}, {order.deliveryAddress.state} - {order.deliveryAddress.pincode}</p>
                             </div>
                             <div className='text-left w-100'>
-                                <h3 style={{ fontSize: '20px', marginBottom: '10px', color: '#007bff' }}><strong>Order Details</strong></h3>
+                                <h3 style={{ fontSize: '20px', marginBottom: '10px', color: '#007bff' }}><strong>Order details</strong></h3>
                                 <hr style={{ borderColor: '#ddd' }} />
                                 <p><strong>Customer Name:</strong> {order.deliveryAddress.name}</p>
                                 <p><strong>Contact Number:</strong> {order.deliveryAddress.contact}</p>
