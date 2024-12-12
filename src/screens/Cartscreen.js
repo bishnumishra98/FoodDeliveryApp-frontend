@@ -21,17 +21,23 @@ export default function Cartscreen() {
                             <div className="flex-container" key={item._id}>
                                 <div className='text-start m-1 w-100'>
                                     <h1>{item.name} [{item.variant}]</h1>
-                                    <h1>Price: {item.quantity} &times; ₹{item.price} = ₹{item.quantity * item.price}</h1>
-                                    <h1 style={{ display: 'inline' }}>Quantity: </h1>
-                                    <i
-                                        className="fa-solid fa-minus"
-                                        onClick={() => { dispatch(addToCart(item, item.quantity - 1)) }}
-                                    ></i>
-                                    <b>{item.quantity}</b>
-                                    <i
-                                        className="fa-solid fa-plus"
-                                        onClick={() => { dispatch(addToCart(item, item.quantity + 1)) }}
-                                    ></i>
+                                    <h1>Price: ₹{item.price} &times; {item.quantity} = ₹{item.quantity * item.price}</h1>
+                                    
+                                    <div className="quantity-buttons">
+                                        <button
+                                            onClick={() => { dispatch(addToCart(item, item.quantity - 1)) }}
+                                            className="quantity-btn"
+                                        >
+                                            -
+                                        </button>
+                                        <span className="quantity-value">{item.quantity}</span>
+                                        <button
+                                            onClick={() => { dispatch(addToCart(item, item.quantity + 1)) }}
+                                            className="quantity-btn"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                     <hr />
                                 </div>
                                 <div className='m-1 w-100'>
@@ -61,8 +67,35 @@ export default function Cartscreen() {
                 )}
             </div>
 
-            {/* Inline CSS for the hover effect */}
+            {/* Inline CSS for the buttons and hover effects */}
             <style>{`
+                .quantity-buttons {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .quantity-btn {
+                    padding: 5px 10px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    border: none;
+                    background: #f8f9fa;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    color: #dc3545;
+                    transition: background-color 0.3s, color 0.3s;
+                }
+
+                .quantity-btn:hover {
+                    background-color: #dc3545;
+                    color: white;
+                }
+
+                .quantity-value {
+                    margin: 0 10px;
+                    font-size: 16px;
+                }
+
                 .trash-icon {
                     font-size: 18px;
                     color: red;
