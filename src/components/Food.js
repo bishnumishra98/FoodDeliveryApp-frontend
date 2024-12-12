@@ -117,9 +117,12 @@ export default function Food({ food }) {
                     width: 200px;
                     cursor: pointer;
                     transition: transform 0.3s;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
                 }
                 .food-header img:hover {
                     transform: scale(1.1);
+                    margin-bottom: 20px;
                 }
                 .quantity-control {
                     display: flex;
