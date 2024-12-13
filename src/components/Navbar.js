@@ -89,7 +89,7 @@ const Navbar = () => {
                             >
                                 <i
                                     className="fas fa-shopping-cart"
-                                    style={{ fontSize: "20px", marginRight: "8px" }}
+                                    style={{ fontSize: "20px", marginRight: "8px", marginTop: "4px" }}
                                 ></i>
                                 {cartstate.cartItems.length > 0 && (
                                     <span
