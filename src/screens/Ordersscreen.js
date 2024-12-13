@@ -1,14 +1,17 @@
-import React , { useEffect} from 'react'
-import {useDispatch , useSelector} from 'react-redux'
-import { getUserOrders } from '../actions/orderActions'
+import React , { useEffect} from 'react';
+import {useDispatch , useSelector} from 'react-redux';
+import { getUserOrders } from '../actions/orderActions';
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { clearCart } from '../actions/cartActions';
+import { useLocation } from "react-router-dom";
 
 export default function Ordersscreen() {
     AOS.init();
     const dispatch = useDispatch();
+    const location = useLocation();
     const orderstate = useSelector(state => state.getUserOrdersReducer);
     const {orders , error , loading} = orderstate;
 
@@ -46,7 +49,20 @@ export default function Ordersscreen() {
     }
 
     useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        console.log("params", params);
+        
+        const paymentSuccess = params.get("paymentSuccess");
+        console.log("paymentSuccess", paymentSuccess);
+        
+
+        // Fetch user orders
         dispatch(getUserOrders());
+
+        if (paymentSuccess === "true" && orders && orders.length > 0) {
+            // const latestOrder = orders[0];   // as the latest order is the first one
+            dispatch(clearCart());
+        }
     }, [])
 
     return (
