@@ -15,45 +15,66 @@ export default function Foodslist() {
         dispatch(getAllFoods());
     }, []);
 
-    return <div>
-        {loading && (<Loading/>)}
-        {error && (<Error error='Something went wrong'/>)}
+    return (
+        <div>
+            <style>
+                {`
+                    .icon-hover {
+                        transition: transform 0.2s ease, color 0.2s ease;
+                        cursor: pointer;
+                    }
 
-        <table  className='table table-bordered table-responsive-sm'>
+                    .icon-hover:hover {
+                        transform: scale(1.2);
+                        color: darkred; /* Slightly darker red for trash icon */
+                    }
 
-            <thead className='thead-dark'>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Image</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {foods && foods.map(food=>{
-
-                    return <tr>
-                        <td>{food.name}</td>
-                        <td>{food.price}</td>
-                        <td>{food.category}</td>
-                        <td>
-                            <img
-                                src={food.image}
-                                alt="food-image"
-                                style={{ height: '80px', width: '80px' }}
-                            />
-                        </td>
-                        <td>
-                            <i className='fa fa-trash m-1' onClick={()=>{dispatch(deleteFood(food._id))}}></i>
-                            <Link to={`/admin/editfood/${food._id}`}><i className='fa fa-edit m-1'></i></Link>
-                        </td>
-
+                    .fa-edit:hover {
+                        color: darkblue; /* Slightly darker green for edit icon */
+                    }
+                `}
+            </style>
+            {loading && <Loading />}
+            {error && <Error error="Something went wrong" />}
+            <table className="table table-bordered table-responsive-sm">
+                <thead className="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Image</th>
+                        <th>Actions</th>
                     </tr>
-                })}
-            </tbody>
-        </table>
-
-    
-    </div>;
+                </thead>
+                <tbody>
+                    {foods &&
+                        foods.map((food) => (
+                            <tr key={food._id}>
+                                <td>{food.name}</td>
+                                <td>{food.price}</td>
+                                <td>{food.category}</td>
+                                <td>
+                                    <img
+                                        src={food.image}
+                                        alt="food"
+                                        style={{ height: "80px", width: "80px" }}
+                                    />
+                                </td>
+                                <td>
+                                    <i
+                                        className="fa fa-trash m-1 icon-hover"
+                                        onClick={() => {
+                                            dispatch(deleteFood(food._id));
+                                        }}
+                                    ></i>
+                                    <Link to={`/admin/editfood/${food._id}`}>
+                                        <i className="fa fa-edit m-1 icon-hover"></i>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                </tbody>
+            </table>
+        </div>
+    );
 }
