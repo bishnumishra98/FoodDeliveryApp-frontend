@@ -30,7 +30,7 @@ const Navbar = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
+                <div className="collapse navbar-collapse" id="navbarNav" style={{marginRight: "60px"}}>
                     <ul className="navbar-nav ms-auto">
                         {currentUser ? (
                             <div className="dropdown mt-2">
