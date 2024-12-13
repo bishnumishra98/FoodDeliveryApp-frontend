@@ -55,6 +55,11 @@ const Navbar = () => {
                                     <a className="dropdown-item" href="/orders">
                                         My orders
                                     </a>
+                                    {currentUser.isAdmin && (
+                                        <a className="dropdown-item" href="/admin">
+                                            Admin panel
+                                        </a>
+                                    )}
                                     <a
                                         className="dropdown-item"
                                         href="#"
@@ -62,7 +67,7 @@ const Navbar = () => {
                                             dispatch(logoutUser());
                                         }}
                                     >
-                                        <li>Logout</li>
+                                        Logout
                                     </a>
                                 </div>
                             </div>
@@ -89,7 +94,11 @@ const Navbar = () => {
                             >
                                 <i
                                     className="fas fa-shopping-cart"
-                                    style={{ fontSize: "20px", marginRight: "8px", marginTop: "4px" }}
+                                    style={{
+                                        fontSize: "20px",
+                                        marginRight: "8px",
+                                        marginTop: "4px",
+                                    }}
                                 ></i>
                                 {cartstate.cartItems.length > 0 && (
                                     <span
