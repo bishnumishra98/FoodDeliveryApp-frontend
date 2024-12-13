@@ -55,7 +55,6 @@ export default function Ordersscreen() {
         const paymentSuccess = params.get("paymentSuccess");
         console.log("paymentSuccess", paymentSuccess);
         
-
         // Fetch user orders
         dispatch(getUserOrders());
 
