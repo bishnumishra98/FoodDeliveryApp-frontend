@@ -19,7 +19,10 @@ export default function Cartscreen() {
                         return (
                             <div className="flex-container" key={item._id}>
                                 <div className='text-start m-1 w-100'>
-                                    <h1>{item.name} [{item.variant}]</h1>
+                                <h1>
+                                    {item.name} <span style={{ color: "grey", fontSize: "0.84em" }}>[{item.size}]</span>
+                                </h1>
+
                                     <h1>Price: ₹{item.price} &times; {item.quantity} = ₹{item.quantity * item.price}</h1>
                                     
                                     <div className="quantity-buttons">

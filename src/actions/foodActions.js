@@ -18,3 +18,15 @@ export const logoutUser = () => (dispatch) => {
 	localStorage.removeItem("currentUser");
 	window.location.href = "/login";
 };
+
+export const deleteFood = (foodid) => async dispatch => {
+	try {
+		const response =await axios.post('/api/foods/deletefood' , {foodid})
+		alert('Food Deleted Successfully')
+		console.log(response);
+		window.location.reload();
+	} catch (error) {
+		alert('Something went wrong')
+		console.log(error);
+	}
+}
