@@ -47,7 +47,7 @@ export default function Adminscreen() {
                     list-style: none;
                     padding: 6px 0;
                     margin: 0 auto 20px;
-                    background-color: skyblue;
+                    background-color: #414ace;
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     width: 50%;
@@ -63,11 +63,8 @@ export default function Adminscreen() {
                     font-size: 18px;
                     font-weight: 500;
                 }
-                .adminfunctions li:hover a {
-                    font-weight: bold;
-                }
                 .adminfunctions li.active {
-                    background: green;
+                    background: #67a739;
                 }
                 .adminfunctions li.active a {
                     color: white;
