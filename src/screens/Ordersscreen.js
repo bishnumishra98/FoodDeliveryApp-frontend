@@ -18,18 +18,19 @@ export default function Ordersscreen() {
     function getDate(utcDateTime) {
         // Parse the input UTC date-time string into a Date object
         const date = new Date(utcDateTime);
-      
+    
         // Add IST offset (+5:30)
-        const istDate = new Date(date.getTime() + (5 * 60 * 60 * 1000) + (30 * 60 * 1000));
-      
+        const ISTOffset = (5 * 60 * 60 * 1000) + (30 * 60 * 1000);  // offset in milliseconds
+        const istDate = new Date(date.getTime() + ISTOffset);
+    
         // Extract day, month, and year in IST
-        const day = String(istDate.getDate()).padStart(2, '0');
-        const month = String(istDate.getMonth() + 1).padStart(2, '0');   // months are 0-based
-        const year = istDate.getFullYear();
-      
+        const day = String(istDate.getUTCDate()).padStart(2, '0');   // use UTCDate for the correct day in the new timezone
+        const month = String(istDate.getUTCMonth() + 1).padStart(2, '0');  // months are 0-based
+        const year = istDate.getUTCFullYear();  // use UTCFullYear for consistency
+    
         // Return the date in DD/MM/YYYY format
         return `${day}/${month}/${year}`;
-    }
+    }    
       
     function getTime(utcDateTime) {
         // Ensure the input date-time string is parsed as UTC
