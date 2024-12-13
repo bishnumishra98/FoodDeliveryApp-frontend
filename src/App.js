@@ -7,8 +7,9 @@ import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Ordersscreen from './screens/Ordersscreen';
-import Adminscreen from './screens/Adminscreen';
 import Failedpaymentscreen from './screens/Failedpaymentscreen';
+import Adminscreen from './screens/Adminscreen';
+
 
 function App() {
   return (
@@ -21,8 +22,8 @@ function App() {
 				<Route path="/register" element={<Registerscreen />} />
 				<Route path="/login" element={<Loginscreen />} />
 				<Route path="/orders" element={<Ordersscreen />} />
-				<Route path="/admin" element={<Adminscreen />} />
 				<Route path="/failedpayment" element={<Failedpaymentscreen />} />
+				<Route path="/admin" element={<Adminscreen />} />
 			</Routes>
 		</BrowserRouter>
     </div>
