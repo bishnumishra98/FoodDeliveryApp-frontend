@@ -59,3 +59,19 @@ select {
 input {
 	margin-top: 10px !important;
 }
+
+.adminfunctions {
+	padding: 10px;
+	background-color: rgb(1, 1, 77);
+}
+
+.adminfunctions li {
+	list-style-type: none !important;
+	display: inline !important;
+	color: white !important;
+}
+
+.adminfunctions li a {
+	color: white !important;
+	padding: 20px !important;
+}

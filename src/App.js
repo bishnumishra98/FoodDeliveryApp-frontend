@@ -22,7 +22,7 @@ function App() {
 					<Route path="/login" element={<Loginscreen />} />
 					<Route path="/orders" element={<Ordersscreen />} />
 					<Route path="/failedpayment" element={<Failedpaymentscreen />} />
-					<Route path="/admin" element={<Adminscreen />} />
+					<Route path="/admin/*" element={<Adminscreen />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
