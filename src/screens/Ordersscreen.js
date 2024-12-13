@@ -59,9 +59,9 @@ export default function Ordersscreen() {
         // Fetch user orders
         dispatch(getUserOrders());
 
-        if (paymentSuccess === "true" && orders && orders.length > 0) {
-            // const latestOrder = orders[0];   // as the latest order is the first one
+        if (paymentSuccess) {
             dispatch(clearCart());
+            // console.log("cart cleared");
         }
     }, [])
 

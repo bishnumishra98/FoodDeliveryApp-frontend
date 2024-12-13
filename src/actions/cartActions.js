@@ -25,5 +25,6 @@ export const deleteFromCart = (food) => (dispatch, getState) => {
 };
 
 export const clearCart = () => (dispatch) => {
-    dispatch({ type: "CLEAR_CART" });
+    dispatch({ type: "CLEAR_CART", payload: [] });   // clear the cart from Redux store
+    localStorage.removeItem("cartItems");   // clear the cart from localStorage too
 };
