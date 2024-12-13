@@ -27,7 +27,7 @@ export default function Adminscreen() {
         <div>
             <div className="row justify-content-center p-3">
                 <div className="col-md-10">
-                    <h2 style={{ fontSize: "35px" }}>Admin Panel</h2>
+                    <h2 style={{ fontSize: "30px" }}> <strong>Admin Panel</strong> </h2>
                     <ul className="adminfunctions">
                         <li>
                             <Link to="userslist" style={{ color: 'white' }}>Users List</Link>
