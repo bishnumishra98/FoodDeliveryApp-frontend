@@ -25,21 +25,21 @@ export default function Editfood() {
 
     useEffect(() => {
         if (food) {
-            if (food._id === foodid) {  // Use foodid from useParams here
+            if (food._id === foodid) {   // use foodid from useParams here
                 setName(food.name);
                 setSize(food.size);
                 setPrice(food.price);
                 setCategory(food.category);
                 setImage(food.image);
-                setImageName(food.imageName);
+                setImageName(food.image_name);
                 setDescription(food.description);
             } else {
-                dispatch(getFoodById(foodid));  // Fetch food data using foodid
+                dispatch(getFoodById(foodid));   // fetch food data using foodid
             }
         } else {
             dispatch(getFoodById(foodid));
         }
-    }, [food, dispatch, foodid]);  // Dependency on foodid
+    }, [food, dispatch, foodid]);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];

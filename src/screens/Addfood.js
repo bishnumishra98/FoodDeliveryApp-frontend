@@ -34,6 +34,7 @@ export default function Addfood() {
             size,
             price,
             category,
+            imageName,
             description,
         };
 
