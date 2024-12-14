@@ -59,7 +59,7 @@ export default function Addfood() {
                     <input
                         className="form-control mb-3"
                         type="text"
-                        placeholder="Serving size (small/medium/large/etc.)"
+                        placeholder="Serving size (half plate/full plate/small/medium/large/etc.)"
                         value={size}
                         onChange={(e) => setsize(e.target.value)}
                     />

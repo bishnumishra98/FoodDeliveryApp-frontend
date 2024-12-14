@@ -84,7 +84,7 @@ export default function Editfood() {
                     <input
                         className="form-control mb-3"
                         type="text"
-                        placeholder="Serving size (small/medium/large/etc.)"
+                        placeholder="Serving size (half plate/full plate/small/medium/large/etc.)"
                         value={size}
                         onChange={(e) => setSize(e.target.value)}
                     />
@@ -129,8 +129,45 @@ export default function Editfood() {
                             onChange={handleImageUpload}
                         />
                         {imageName && <p className="file-name">{imageName}</p>}
-                    </div>
+                        
+                        <style jsx>{`
+                            .custom-file-input {
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
 
+                            .file-input {
+                                opacity: 0;
+                                position: absolute;
+                                z-index: -1;
+                            }
+
+                            .upload-label {
+                                display: inline-block;
+                                padding: 10px 20px;
+                                background-color: #007bff;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: bold;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: background-color 0.3s ease;
+                                text-align: left;
+                            }
+
+                            .upload-label:hover {
+                                background-color: #0056b3;
+                            }
+
+                            .file-name {
+                                margin-top: 10px;
+                                font-size: 14px;
+                                color: #555;
+                            }
+                        `}</style>
+                    </div>
                     <textarea
                         className="form-control mb-3"
                         rows="6"
