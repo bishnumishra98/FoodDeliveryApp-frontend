@@ -155,7 +155,7 @@ export default function Addfood() {
                 }
 
                 .toggle-switch input:checked + .toggle-label {
-                    background-color: #b00a0a;   /* Red for Non-Veg */
+                    background-color: #b00a0a;   /* Red for Non-veg */
                 }
 
                 .toggle-switch input:checked + .toggle-label .toggle-slider {
