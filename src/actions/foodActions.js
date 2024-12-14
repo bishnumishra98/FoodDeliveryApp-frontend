@@ -19,6 +19,18 @@ export const logoutUser = () => (dispatch) => {
 	window.location.href = "/login";
 };
 
+export const getFoodById = (foodId) => async (dispatch) => {
+    dispatch({ type: "GET_FOODBYID_REQUEST" });
+
+    try {
+        const response = await axios.post(`${reactappbackendurl}/api/foods/getfoodbyid`, { foodId });
+        console.log(response);
+        dispatch({ type: "GET_FOODBYID_SUCCESS", payload: response.data });
+    } catch (error) {
+        dispatch({ type: "GET_FOODBYID_FAILED", payload: error });
+    }
+};
+
 export const addFood = (food, imageFile) => async (dispatch) => {
     dispatch({ type: "ADD_FOOD_REQUEST" });
     const formData = new FormData();
@@ -40,6 +52,31 @@ export const addFood = (food, imageFile) => async (dispatch) => {
         window.location.href = "/admin/addfood";
     } catch (error) {
         dispatch({ type: "ADD_FOOD_FAILED", payload: error });
+    }
+};
+
+export const editFood = (editedFood, imageFile) => async (dispatch) => {
+    dispatch({ type: "EDIT_FOOD_REQUEST" });
+    const formData = new FormData();
+    formData.append("food", JSON.stringify(editedFood));
+    formData.append("image", imageFile);
+
+    try {
+        const response = await axios.post(`${reactappbackendurl}/api/foods/editfood`, formData, {
+			headers: {
+				"Content-Type": "multipart/form-data",
+			},
+		});
+        console.log(response);
+        dispatch({ type: "EDIT_FOOD_SUCCESS" });
+
+		// Wait for 2 seconds before redirecting
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+		
+        window.location.href = "/admin/foodlist";
+    } catch (error) {
+        console.error("Error editing food:", error);
+        dispatch({ type: "EDIT_FOOD_FAILED", payload: error });
     }
 };
 
