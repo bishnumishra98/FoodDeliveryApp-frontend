@@ -36,8 +36,6 @@ export default function Addfood() {
     return (
         <div>
             <div className="text-left shadow-lg p-3 mb-5 bg-white rounded">
-                <h1>Add Food</h1>
-
                 {loading && <Loading />}
                 {error && <Error error="Something went wrong" />}
                 {success && <Success success="New Food added successfully" />}
