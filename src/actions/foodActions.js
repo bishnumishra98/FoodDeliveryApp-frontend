@@ -19,6 +19,17 @@ export const logoutUser = () => (dispatch) => {
 	window.location.href = "/login";
 };
 
+export const addFood = (food) => async dispatch => {
+    dispatch({type:'ADD_FOOD_REQUEST'});
+    try {
+        const response= await axios.post('/api/foods/addfood' , {food});
+        console.log(response);
+        dispatch({type:'ADD_FOOD_SUCCESS'});
+    } catch (error) {
+        dispatch({type:'ADD_FOOD_FAILED' , payload : error});
+    }
+}
+
 export const deleteFood = (foodid) => async dispatch => {
 	try {
 		const response =await axios.post('/api/foods/deletefood' , {foodid})

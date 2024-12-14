@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
-import { getAllFoodsReducer } from "./reducers/foodReducers";
+import { getAllFoodsReducer, addFoodReducer } from "./reducers/foodReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { loginUserReducer, registerUserReducer } from "./reducers/userReducers";
 import { placeOrderReducer, getUserOrdersReducer } from "./reducers/orderReducers";
@@ -12,7 +12,8 @@ const finalReducer = combineReducers({
 	registerUserReducer: registerUserReducer,
 	loginUserReducer: loginUserReducer,
 	placeOrderReducer: placeOrderReducer,
-	getUserOrdersReducer: getUserOrdersReducer
+	getUserOrdersReducer: getUserOrdersReducer,
+	addFoodReducer: addFoodReducer
 });
 
 // If there is any item with the name 'cartItems' in the local storage, first we have to convert it to JSON object, then assign it to the store.

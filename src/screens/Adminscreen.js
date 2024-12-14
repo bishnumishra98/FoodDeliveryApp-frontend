@@ -50,7 +50,7 @@ export default function Adminscreen() {
                     background-color: #414ace;
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    width: 50%;
+                    width: 75%;
                 }
                 .adminfunctions li {
                     padding: 5px 20px;
