@@ -22,11 +22,16 @@ export const logoutUser = () => (dispatch) => {
 export const addFood = (food) => async dispatch => {
     dispatch({type:'ADD_FOOD_REQUEST'});
     try {
-        const response= await axios.post(`${reactappbackendurl}/api/foods/addfood`, {food});
+        const response = await axios.post(`${reactappbackendurl}/api/foods/addfood`, {food});
         console.log(response);
         dispatch({type:'ADD_FOOD_SUCCESS'});
+        
+        // Wait for 2 seconds before redirecting
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        window.location.href = "/admin/addfood";
     } catch (error) {
-        dispatch({type:'ADD_FOOD_FAILED' , payload : error});
+        dispatch({type:'ADD_FOOD_FAILED', payload: error});
     }
 }
 

@@ -22,15 +22,15 @@ export const getAllFoodsReducer = (state = { foods: [] }, action) => {
 
 export const addFoodReducer = (state = {} , action) => {
     switch(action.type) {
-        case 'ADD_PIZZA_REQUEST' : return {
+        case 'ADD_FOOD_REQUEST' : return {
             loading : true,
             ...state
         }
-        case 'ADD_PIZZA_SUCCESS' : return {
+        case 'ADD_FOOD_SUCCESS' : return {
             loading : false ,
             success : true,
         }
-        case 'ADD_PIZZA_FAILED' : return {
+        case 'ADD_FOOD_FAILED' : return {
             error : action.payload ,
             loading : false
         }
