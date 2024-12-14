@@ -54,7 +54,7 @@ export default function Foodslist() {
                                 <td>{food.name}</td>
                                 <td>{food.size}</td>
                                 <td>{food.price}</td>
-                                <td>{food.category}</td>
+                                <td>{food.category === "veg" ? "Veg" : "Non-veg"}</td>
                                 <td>
                                     <img
                                         src={food.image}

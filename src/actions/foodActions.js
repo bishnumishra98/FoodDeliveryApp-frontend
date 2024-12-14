@@ -19,21 +19,29 @@ export const logoutUser = () => (dispatch) => {
 	window.location.href = "/login";
 };
 
-export const addFood = (food) => async dispatch => {
-    dispatch({type:'ADD_FOOD_REQUEST'});
+export const addFood = (food, imageFile) => async (dispatch) => {
+    dispatch({ type: "ADD_FOOD_REQUEST" });
+    const formData = new FormData();
+    formData.append("food", JSON.stringify(food));
+    formData.append("image", imageFile);
+
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/foods/addfood`, {food});
+        const response = await axios.post(`${reactappbackendurl}/api/foods/addfood`, formData, {
+			headers: {
+				"Content-Type": "multipart/form-data",
+			},
+        });
         console.log(response);
-        dispatch({type:'ADD_FOOD_SUCCESS'});
-        
+        dispatch({ type: "ADD_FOOD_SUCCESS" });
+
         // Wait for 2 seconds before redirecting
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
         window.location.href = "/admin/addfood";
     } catch (error) {
-        dispatch({type:'ADD_FOOD_FAILED', payload: error});
+        dispatch({ type: "ADD_FOOD_FAILED", payload: error });
     }
-}
+};
 
 export const deleteFood = (foodid) => async dispatch => {
 	try {
