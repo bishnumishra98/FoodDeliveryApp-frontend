@@ -114,15 +114,15 @@ export default function Addfood() {
             {/* Internal CSS for Toggle Switch */}
             <style jsx>{`
                 .toggle-switch-container {
-                    margin: 10px 0; /* Evenly spaced from surrounding fields */
-                    text-align: left; /* Left aligned */
+                    margin: 10px 0;
+                    text-align: left;
                 }
 
                 .toggle-switch {
                     position: relative;
                     display: inline-block;
-                    width: 120px; /* Widened to fit text */
-                    height: 34px; /* Adjusted height */
+                    width: 120px;
+                    height: 34px;
                 }
 
                 .toggle-switch input {
@@ -138,7 +138,7 @@ export default function Addfood() {
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background-color: #67a739; /* Green for Veg */
+                    background-color: #67a739;   /* Green for Veg */
                     border-radius: 34px;
                     transition: background-color 0.3s;
                 }
@@ -155,11 +155,11 @@ export default function Addfood() {
                 }
 
                 .toggle-switch input:checked + .toggle-label {
-                    background-color: #b00a0a; /* Red for Non-Veg */
+                    background-color: #b00a0a;   /* Red for Non-Veg */
                 }
 
                 .toggle-switch input:checked + .toggle-label .toggle-slider {
-                    transform: translateX(86px); /* Adjusted for new width */
+                    transform: translateX(86px);
                 }
 
                 .toggle-label .toggle-text {
@@ -167,7 +167,7 @@ export default function Addfood() {
                     top: 50%;
                     left: 50%;
                     transform: translate(-70%, -50%);
-                    font-size: 14px; /* Increased font size for better readability */
+                    font-size: 14px;
                     color: white;
                     font-weight: bold;
                 }
