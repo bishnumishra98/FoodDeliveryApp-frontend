@@ -72,8 +72,8 @@ export const editFood = (editedFood, imageFile) => async (dispatch) => {
 
 		// Wait for 2 seconds before redirecting
         await new Promise((resolve) => setTimeout(resolve, 2000));
-		
-        window.location.href = "/admin/foodlist";
+
+        window.location.href = "/";
     } catch (error) {
         console.error("Error editing food:", error);
         dispatch({ type: "EDIT_FOOD_FAILED", payload: error });
