@@ -40,7 +40,8 @@ export default function Foodslist() {
                 <thead className="thead-dark">
                     <tr>
                         <th>Name</th>
-                        <th>Price</th>
+                        <th>Serving size</th>
+                        <th>Price(₹)</th>
                         <th>Category</th>
                         <th>Image</th>
                         <th>Actions</th>
@@ -51,6 +52,7 @@ export default function Foodslist() {
                         foods.map((food) => (
                             <tr key={food._id}>
                                 <td>{food.name}</td>
+                                <td>{food.size}</td>
                                 <td>{food.price}</td>
                                 <td>{food.category}</td>
                                 <td>

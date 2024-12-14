@@ -34,17 +34,17 @@ export default function Addfood() {
     }
 
     return (
-        <div>
+        <div style={{width: "480px"}}>
             <div className="text-left shadow-lg p-3 mb-5 bg-white rounded">
                 {loading && <Loading />}
                 {error && <Error error="Something went wrong" />}
                 {success && <Success success="New Food added successfully" />}
 
-                <form onSubmit={formHandler}>
+                <form onSubmit = {formHandler}>
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="Name"
+                        placeholder="Name of the food item"
                         value={name}
                         onChange={(e) => {
                             setname(e.target.value);
@@ -53,7 +53,7 @@ export default function Addfood() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="Size"
+                        placeholder="Serving size (full plate/half plate/small/medium/large/etc.)"
                         value={size}
                         onChange={(e) => {
                             setsize(e.target.value);
@@ -99,7 +99,7 @@ export default function Addfood() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="Description"
+                        placeholder="Food description"
                         value={description}
                         onChange={(e) => {
                             setdescription(e.target.value);
