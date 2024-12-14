@@ -9,7 +9,7 @@ export default function Addfood() {
     const [name, setname] = useState("");
     const [size, setsize] = useState();
     const [price, setprice] = useState();
-    const [category, setcategory] = useState("veg"); // Default category is "veg"
+    const [category, setcategory] = useState("veg");
     const [image, setimage] = useState("");
     const [description, setdescription] = useState("");
 
