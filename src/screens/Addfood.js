@@ -81,7 +81,7 @@ export default function Addfood() {
                             <label htmlFor="category-toggle" className="toggle-label">
                                 <span className="toggle-slider"></span>
                                 <span className="toggle-text">
-                                    {category === "veg" ? "Veg" : "Non-Veg"}
+                                    {category === "veg" ? "Veg" : "Non-veg"}
                                 </span>
                             </label>
                         </div>
