@@ -4,7 +4,7 @@ import { thunk } from "redux-thunk";
 import { getAllFoodsReducer, addFoodReducer, getFoodByIdReducer, editFoodReducer } from "./reducers/foodReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { loginUserReducer, registerUserReducer } from "./reducers/userReducers";
-import { placeOrderReducer, getUserOrdersReducer } from "./reducers/orderReducers";
+import { placeOrderReducer, getUserOrdersReducer, getAllOrdersReducer } from "./reducers/orderReducers";
 
 const finalReducer = combineReducers({
 	getAllFoodsReducer: getAllFoodsReducer,
@@ -15,7 +15,8 @@ const finalReducer = combineReducers({
 	getUserOrdersReducer: getUserOrdersReducer,
 	addFoodReducer: addFoodReducer,
 	getFoodByIdReducer: getFoodByIdReducer,
-	editFoodReducer: editFoodReducer
+	editFoodReducer: editFoodReducer,
+	getAllOrdersReducer: getAllOrdersReducer,
 });
 
 // If there is any item with the name 'cartItems' in the local storage, first we have to convert it to JSON object, then assign it to the store.
