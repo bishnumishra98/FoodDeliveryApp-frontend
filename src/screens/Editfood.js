@@ -32,7 +32,7 @@ export default function Editfood() {
                 setPrice(food.price);
                 setCategory(food.category);
                 setImage(food.image);
-                setImageName(food.image_name);
+                setImageName(food.imageName);
                 setDescription(food.description);
             } else {
                 dispatch(getFoodById(foodid));   // fetch food data using foodid
