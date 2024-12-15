@@ -59,9 +59,12 @@ export default function Editfood() {
             size,
             price,
             category,
+            imageName,
             description,
         };
-
+        console.log(editedFood);
+        console.log(image);
+        
         dispatch(editFood(editedFood, image));
     }
 
