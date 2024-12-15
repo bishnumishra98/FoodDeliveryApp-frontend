@@ -72,10 +72,7 @@ export default function Adminscreen() {
                 }
                 `}
             </style>
-            <div className="admin-container">
-                <h2 className="admin-title">
-                    <strong>Admin Panel (Welcome, the Baap of this app)</strong>
-                </h2>
+            <div className="admin-container">    
                 <ul className="adminfunctions">
                     <li className={location.pathname === "/admin/userslist" ? "active" : ""}>
                         <Link to="userslist">Users List</Link>
