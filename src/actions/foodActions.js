@@ -80,14 +80,14 @@ export const editFood = (editedFood, imageFile) => async (dispatch) => {
     }
 };
 
-export const deleteFood = (foodid) => async dispatch => {
-	try {
-		const response =await axios.post(`${reactappbackendurl}/api/foods/deletefood` , {foodid});
-		alert('Food Deleted Successfully')
-		console.log(response);
-		window.location.reload();
-	} catch (error) {
-		alert('Something went wrong')
-		console.log(error);
-	}
-}
+export const deleteFood = (foodid) => async (dispatch) => {
+    try {
+        const response = await axios.delete(`${reactappbackendurl}/api/foods/deletefood`, { data: { foodid } });
+        alert("Food deleted successfully");
+        console.log(response);
+        window.location.reload();
+    } catch (error) {
+        alert("Something went wrong");
+        console.log(error);
+    }
+};
