@@ -27,6 +27,9 @@ export default function Orderslist() {
         return `${String(istDate.getUTCHours()).padStart(2, "0")}:${String(istDate.getUTCMinutes()).padStart(2, "0")}:${String(istDate.getUTCSeconds()).padStart(2, "0")}`;
     };
 
+    // Sort orders by createdAt (most recent first)
+    const sortedOrders = orders ? [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];
+
     return (
         <div>
             {loading && <Loading />}
@@ -48,82 +51,81 @@ export default function Orderslist() {
                 </thead>
 
                 <tbody style={{ fontSize: "12px" }}>
-                    {orders &&
-                        orders.map((order) => (
-                            <tr key={order._id}>
-                                <td className="text-center align-middle">{order.name}</td>
-                                <td className="text-center align-middle" style={{ wordWrap: "break-word" }}>
-                                    <div>{order.userid}</div>
-                                </td>
-                                <td className="text-center align-middle" style={{ wordWrap: "break-word" }}>
-                                    <div>{order._id}</div>
-                                </td>
-                                <td>
-                                    <div className="table-responsive">
-                                        <table className="table table-borderless mb-0">
-                                            <thead className="text-center">
-                                                <tr>
-                                                    <th>Image</th>
-                                                    <th>Name</th>
-                                                    <th>Size</th>
-                                                    <th>Qty</th>
-                                                    <th>Price</th>
+                    {sortedOrders.map((order) => (
+                        <tr key={order._id}>
+                            <td className="text-center align-middle">{order.name}</td>
+                            <td className="text-center align-middle" style={{ wordWrap: "break-word" }}>
+                                <div>{order.userid}</div>
+                            </td>
+                            <td className="text-center align-middle" style={{ wordWrap: "break-word" }}>
+                                <div>{order._id}</div>
+                            </td>
+                            <td>
+                                <div className="table-responsive">
+                                    <table className="table table-borderless mb-0">
+                                        <thead className="text-center">
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Size</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {order.orderItems.map((item, index) => (
+                                                <tr key={index} className="text-center">
+                                                    <td>
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.name}
+                                                            style={{ width: "50px", height: "50px", objectFit: "cover" }}
+                                                        />
+                                                    </td>
+                                                    <td className="align-middle">{item.name}</td>
+                                                    <td className="align-middle">{item.size}</td>
+                                                    <td className="align-middle">{item.quantity}</td>
+                                                    <td className="align-middle">{item.price}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                {order.orderItems.map((item, index) => (
-                                                    <tr key={index} className="text-center">
-                                                        <td>
-                                                            <img
-                                                                src={item.image}
-                                                                alt={item.name}
-                                                                style={{ width: "50px", height: "50px", objectFit: "cover" }}
-                                                            />
-                                                        </td>
-                                                        <td className="align-middle">{item.name}</td>
-                                                        <td className="align-middle">{item.size}</td>
-                                                        <td className="align-middle">{item.quantity}</td>
-                                                        <td className="align-middle">{item.price}</td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                                <td className="text-center align-middle">{order.deliveryAddress.name}</td>
-                                <td className="text-center align-middle">{order.deliveryAddress.contact}</td>
-                                <td className="text-center align-middle">
-                                    {`${order.deliveryAddress.street}, ${order.deliveryAddress.city}, ${order.deliveryAddress.state} - ${order.deliveryAddress.pincode}`}
-                                </td>
-                                <td className="text-center align-middle">{order.orderAmount}</td>
-                                <td className="text-center align-middle">
-                                    <div>{getDate(order.createdAt)}</div>
-                                    <div>{getTime(order.createdAt)}</div>
-                                </td>
-                                <td className="text-center align-middle">
-                                    {order.isDelivered ? (
-                                        <span
-                                            className="badge badge-success"
-                                            style={{
-                                                color: "black",
-                                                fontSize: "14px",
-                                                padding: "5px 10px",
-                                                fontWeight: "bold",
-                                            }}
-                                        >
-                                            Delivered
-                                        </span>
-                                    ) : (
-                                        <button
-                                            className="btn btn-danger btn-sm"
-                                            onClick={() => dispatch(deliverOrder(order._id))}
-                                        >
-                                            Deliver
-                                        </button>
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td className="text-center align-middle">{order.deliveryAddress.name}</td>
+                            <td className="text-center align-middle">{order.deliveryAddress.contact}</td>
+                            <td className="text-center align-middle">
+                                {`${order.deliveryAddress.street}, ${order.deliveryAddress.city}, ${order.deliveryAddress.state} - ${order.deliveryAddress.pincode}`}
+                            </td>
+                            <td className="text-center align-middle">{order.orderAmount}</td>
+                            <td className="text-center align-middle">
+                                <div>{getDate(order.createdAt)}</div>
+                                <div>{getTime(order.createdAt)}</div>
+                            </td>
+                            <td className="text-center align-middle">
+                                {order.isDelivered ? (
+                                    <span
+                                        className="badge badge-success"
+                                        style={{
+                                            color: "black",
+                                            fontSize: "14px",
+                                            padding: "5px 10px",
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        Delivered
+                                    </span>
+                                ) : (
+                                    <button
+                                        className="btn btn-danger btn-sm"
+                                        onClick={() => dispatch(deliverOrder(order._id))}
+                                    >
+                                        Mark delivered
+                                    </button>
+                                )}
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
