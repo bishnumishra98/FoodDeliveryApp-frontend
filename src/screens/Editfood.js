@@ -23,6 +23,7 @@ export default function Editfood() {
     const editfoodstate = useSelector((state) => state.editFoodReducer);
     const { editloading, editerror, editsuccess } = editfoodstate;
 
+    // Populate all fields with existing data extracted from DB
     useEffect(() => {
         if (food) {
             if (food._id === foodid) {   // use foodid from useParams here
