@@ -62,7 +62,7 @@ export const editFood = (editedFood, imageFile) => async (dispatch) => {
     formData.append("image", imageFile);
 
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/foods/editfood`, formData, {
+        const response = await axios.put(`${reactappbackendurl}/api/foods/editfood`, formData, {
 			headers: {
 				"Content-Type": "multipart/form-data",
 			},
@@ -82,7 +82,7 @@ export const editFood = (editedFood, imageFile) => async (dispatch) => {
 
 export const deleteFood = (foodid) => async dispatch => {
 	try {
-		const response =await axios.post('/api/foods/deletefood' , {foodid})
+		const response =await axios.post(`${reactappbackendurl}/api/foods/deletefood` , {foodid});
 		alert('Food Deleted Successfully')
 		console.log(response);
 		window.location.reload();
