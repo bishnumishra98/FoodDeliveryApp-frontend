@@ -4,7 +4,7 @@ import { editFood, getFoodById } from "../actions/foodActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from "../components/Success";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function Editfood() {
     const { foodid } = useParams();
@@ -68,10 +68,15 @@ export default function Editfood() {
         dispatch(editFood(editedFood, image));
     }
 
+    const navigate = useNavigate();
+    const handleCancel = () => {
+        navigate('/admin/foodslist');   // redirects the user back to foodslist
+    };
+
     return (
         <div>
             <div className="text-left shadow-lg p-3 mb-5 bg-white rounded" style={{ width: "480px" }}>
-                <h1>Edit Food</h1>
+                <h1> <strong>EDIT FOOD PAGE</strong> </h1>
                 {loading && <Loading />}
                 {error && <Error error="Something went wrong" />}
                 {editsuccess && <Success success="Food details edited successfully" />}
@@ -181,7 +186,10 @@ export default function Editfood() {
                     ></textarea>
 
                     <button className="btn add-food-btn mt-3" type="submit">
-                        Edit Food
+                        Save changes
+                    </button>
+                    <button className="btn cancel-btn mt-3" type="button" onClick={handleCancel}>
+                        Cancel
                     </button>
                 </form>
             </div>
@@ -250,16 +258,28 @@ export default function Editfood() {
 
                 /* Styles for Add Food button */
                 .add-food-btn {
-                    background-color: #007bff !important;
+                    background-color: #28a745 !important;
                     color: white !important;
                     transition: background-color 0.3s, box-shadow 0.3s !important;
                     font-weight: bold;
                 }
 
                 .add-food-btn:hover {
-                    background-color: #0056b3 !important;
+                    background-color: #218838 !important;
                     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
                     font-weight: bold;
+                }
+                
+                /* Styles for Cancel button */
+                .cancel-btn {
+                    margin-left: 20px;
+                    font-weight: bold;
+                }
+                .cancel-btn:hover {
+                    margin-left: 20px;
+                    font-weight: bold;
+                    background-color: #b71818 !important;
+                    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
                 }
             `}</style>
         </div>
