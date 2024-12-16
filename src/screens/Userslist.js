@@ -6,8 +6,8 @@ import { deleteUser, getAllUsers, updateUserStatus } from "../actions/userAction
 
 export default function Userslist() {
     const dispatch = useDispatch();
-    const usersstate = useSelector((state) => state.getAllUsersReducer);
-    const { error, loading, users } = usersstate;
+    const usersState = useSelector((state) => state.getAllUsersReducer);
+    const { error, loading, users } = usersState;
 
     useEffect(() => {
         dispatch(getAllUsers());
@@ -17,6 +17,13 @@ export default function Userslist() {
         // Dispatch an action to update the user status
         const updatedStatus = !isAdmin; // Toggle the current isAdmin value
         dispatch(updateUserStatus(userId, updatedStatus));
+    };
+
+    const confirmDeleteUser = (userId) => {
+        const confirmMessage = "Are you sure you want to delete this user? This action cannot be undone.";
+        if (window.confirm(confirmMessage)) {
+            dispatch(deleteUser(userId));
+        }
     };
 
     return (
@@ -58,9 +65,7 @@ export default function Userslist() {
                                         <i
                                             className="fa fa-trash trash-icon"
                                             style={{ cursor: "pointer" }}
-                                            onClick={() => {
-                                                dispatch(deleteUser(user._id));
-                                            }}
+                                            onClick={() => confirmDeleteUser(user._id)}
                                         ></i>
                                     </td>
                                 </tr>
@@ -68,6 +73,7 @@ export default function Userslist() {
                         })}
                 </tbody>
             </table>
+
             {/* Inline CSS for the trash-icon button and hover effect */}
             <style>{`
             .trash-icon {
