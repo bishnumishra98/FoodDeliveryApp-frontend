@@ -47,6 +47,28 @@ export const getAllUsers = () => async dispatch => {
     }
 }
 
+export const updateUserStatus = (userId, isAdmin) => async (dispatch) => {
+    try {
+        dispatch({ type: "UPDATE_USER_STATUS_REQUEST" });
+
+        const response = await axios.put(`${reactappbackendurl}/api/users/updatestatus`, {
+            userId,
+            isAdmin,
+        });
+
+        console.log("User status updated:", response.data);
+
+        dispatch({ type: "UPDATE_USER_STATUS_SUCCESS", payload: response.data });
+        dispatch(getAllUsers()); // Refresh the users list
+    } catch (error) {
+        console.error("Error updating user status:", error);
+        dispatch({
+            type: "UPDATE_USER_STATUS_FAILED",
+            payload: error.message,
+        });
+    }
+};
+
 export const deleteUser = (userid) => async dispatch => {
     try {
         await axios.post(`${reactappbackendurl}/api/users/deleteuser`, {userid});

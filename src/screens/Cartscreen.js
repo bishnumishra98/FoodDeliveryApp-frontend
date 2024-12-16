@@ -107,7 +107,7 @@ export default function Cartscreen() {
 
                 .trash-icon:hover {
                     color: darkred;
-                    transform: scale(1.2); /* Slightly larger on hover */
+                    transform: scale(1.2);
                 }
             `}</style>
         </div>
