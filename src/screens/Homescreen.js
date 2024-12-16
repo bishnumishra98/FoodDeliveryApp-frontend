@@ -154,7 +154,7 @@ export default function Homescreen() {
                 }
 
                 .toggle-text {
-                    font-size: 14px;
+                    font-size: 18px;
                     font-weight: bold;
                     color: #333;
                 }
