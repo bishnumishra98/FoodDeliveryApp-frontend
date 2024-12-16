@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteFood, getAllFoods } from "../actions/foodActions";
 import Error from "../components/Error";
-// import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 
 export default function Foodslist() {
@@ -13,29 +12,37 @@ export default function Foodslist() {
 
     useEffect(() => {
         dispatch(getAllFoods());
-    }, []);
+    }, [dispatch]);
+
+    // Function to handle food deletion with confirmation prompt
+    const handleDeleteFood = (foodId) => {
+        const confirmation = window.confirm("Are you sure you want to delete this food item? This action cannot be undone.");
+        if (confirmation) {
+            dispatch(deleteFood(foodId));
+        }
+    };
 
     return (
         <div>
-            <style>
-                {`
-                    .icon-hover {
-                        transition: transform 0.2s ease, color 0.2s ease;
-                        cursor: pointer;
-                    }
+            <style>{`
+                .icon-hover {
+                    transition: transform 0.2s ease, color 0.2s ease;
+                    cursor: pointer;
+                }
 
-                    .icon-hover:hover {
-                        transform: scale(1.2);
-                        color: darkred; /* Slightly darker red for trash icon */
-                    }
+                .icon-hover:hover {
+                    transform: scale(1.2);
+                    color: darkred;
+                }
 
-                    .fa-edit:hover {
-                        color: darkblue; /* Slightly darker green for edit icon */
-                    }
-                `}
-            </style>
+                .fa-edit:hover {
+                    color: darkblue;
+                }
+            `}</style>
+
             {loading && <Loading />}
             {error && <Error error="Something went wrong" />}
+
             <table className="table table-bordered table-responsive-sm">
                 <thead className="thead-dark">
                     <tr>
@@ -63,11 +70,10 @@ export default function Foodslist() {
                                     />
                                 </td>
                                 <td>
+                                    {/* Confirmation prompt before delete */}
                                     <i
                                         className="fa fa-trash m-1 icon-hover"
-                                        onClick={() => {
-                                            dispatch(deleteFood(food._id));
-                                        }}
+                                        onClick={() => handleDeleteFood(food._id)}
                                     ></i>
                                     <Link to={`/admin/editfood/${food._id}`}>
                                         <i className="fa fa-edit m-1 icon-hover"></i>
