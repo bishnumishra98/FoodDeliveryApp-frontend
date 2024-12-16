@@ -56,7 +56,7 @@ export default function Userslist() {
                                     </td>
                                     <td>
                                         <i
-                                            className="fa fa-trash"
+                                            className="fa fa-trash trash-icon"
                                             style={{ cursor: "pointer" }}
                                             onClick={() => {
                                                 dispatch(deleteUser(user._id));
@@ -68,6 +68,20 @@ export default function Userslist() {
                         })}
                 </tbody>
             </table>
+            {/* Inline CSS for the trash-icon button and hover effect */}
+            <style>{`
+            .trash-icon {
+                font-size: 18px;
+                color: red;
+                cursor: pointer;
+                transition: transform 0.2s ease, color 0.2s ease;
+            }
+
+            .trash-icon:hover {
+                color: darkred;
+                transform: scale(1.2);
+            }
+            `}</style>
         </div>
     );
 }
