@@ -11,33 +11,48 @@ export default function Homescreen() {
     const foodsstate = useSelector((state) => state.getAllFoodsReducer);
     const { foods, error, loading } = foodsstate;
 
-    // State for Veg toggle
+    // States for Veg toggle and search input
     const [showVegOnly, setShowVegOnly] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         dispatch(getAllFoods());
     }, [dispatch]);
 
-    // Filtered foods based on Veg toggle
-    const filteredFoods = showVegOnly
-        ? foods.filter((food) => food.category === "veg")
-        : foods;
+    // Filter foods based on Veg toggle and search term
+    const filteredFoods = foods
+        .filter((food) => (showVegOnly ? food.category === "veg" : true))
+        .filter((food) =>
+            food.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
     return (
         <div>
-            {/* Toggle Switch */}
-            <div className="toggle-switch-container mb-3">
-                <label className="switch-label">
-                    <input
-                        type="checkbox"
-                        checked={showVegOnly}
-                        onChange={() => setShowVegOnly(!showVegOnly)}
-                    />
-                    <span className="slider"></span>
-                </label>
-                <span className="toggle-text">
-                    {showVegOnly ? "Veg only" : "Veg only"}
-                </span>
+            {/* Search Bar and Toggle Switch */}
+            <div className="search-toggle-container mb-3">
+                {/* Search Bar */}
+                <input
+                    type="text"
+                    className="search-bar"
+                    placeholder="Search for food..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+
+                {/* Veg Only Toggle Switch */}
+                <div className="toggle-switch-container">
+                    <label className="switch-label">
+                        <input
+                            type="checkbox"
+                            checked={showVegOnly}
+                            onChange={() => setShowVegOnly(!showVegOnly)}
+                        />
+                        <span className="slider"></span>
+                    </label>
+                    <span className="toggle-text">
+                        {showVegOnly ? "Veg only" : "Veg only"}
+                    </span>
+                </div>
             </div>
 
             {/* Food Cards */}
@@ -46,27 +61,52 @@ export default function Homescreen() {
                     <Loading />
                 ) : error ? (
                     <Error error="Something went wrong" />
-                ) : (
+                ) : filteredFoods.length > 0 ? (
                     filteredFoods.map((food) => (
                         <div className="col-md-3 m-3" key={food._id}>
                             <Food food={food} />
                         </div>
                     ))
+                ) : (
+                    <p className="no-results">No food items match your search.</p>
                 )}
             </div>
 
             {/* Internal CSS */}
             <style>
                 {`
+                /* Container for search and toggle switch */
+                .search-toggle-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 10px auto;
+                    max-width: 600px;
+                }
+
+                /* Search Bar */
+                .search-bar {
+                    flex: 1;
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    outline: none;
+                    transition: border-color 0.3s;
+                }
+
+                .search-bar:focus {
+                    border-color: #28a745; /* Green border on focus */
+                }
+
                 /* Toggle Switch Container */
                 .toggle-switch-container {
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    margin: 10px 0;
+                    margin-left: 15px;
+					margin-top: 10px;
                 }
 
-                /* Switch Label (Background) */
                 .switch-label {
                     position: relative;
                     display: inline-block;
@@ -75,14 +115,12 @@ export default function Homescreen() {
                     margin-right: 10px;
                 }
 
-                /* Hide Default Checkbox */
                 .switch-label input {
                     opacity: 0;
                     width: 0;
                     height: 0;
                 }
 
-                /* Slider (Switch Knob) */
                 .slider {
                     position: absolute;
                     cursor: pointer;
@@ -90,12 +128,11 @@ export default function Homescreen() {
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background-color: #ccc; /* Default grey */
+                    background-color: #ccc;
                     transition: 0.4s;
                     border-radius: 30px;
                 }
 
-                /* Switch Circle */
                 .slider::before {
                     content: "";
                     position: absolute;
@@ -108,7 +145,6 @@ export default function Homescreen() {
                     border-radius: 50%;
                 }
 
-                /* Checked State */
                 .switch-label input:checked + .slider {
                     background-color: #28a745; /* Green */
                 }
@@ -117,11 +153,18 @@ export default function Homescreen() {
                     transform: translateX(30px);
                 }
 
-                /* Toggle Text */
                 .toggle-text {
-                    font-size: 16px;
+                    font-size: 14px;
                     font-weight: bold;
                     color: #333;
+                }
+
+                /* No results message */
+                .no-results {
+                    font-size: 18px;
+                    color: #666;
+                    text-align: center;
+                    margin-top: 20px;
                 }
             `}
             </style>
