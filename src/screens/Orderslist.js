@@ -110,7 +110,7 @@ export default function Orderslist() {
                             <td className="text-center align-middle">
                                 <select
                                     className="form-control"
-                                    defaultValue={order.deliveryStatus || "Placed"}
+                                    defaultValue={order.deliveryStatus || "orderplaced"}
                                     onChange={(e) => handleStatusChange(order._id, e.target.value)}
                                     style={{ fontSize: "12px", width: "120px" }}
                                 >
