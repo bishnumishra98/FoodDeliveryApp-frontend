@@ -41,7 +41,7 @@ export default function Orderslist() {
             }
         });
 
-        return () => socket.disconnect(); // Cleanup socket connection on unmount
+        return () => socket.disconnect();   // cleanup socket connection on unmount
     }, []);
 
     // Functions to convert UTC to IST date and time
