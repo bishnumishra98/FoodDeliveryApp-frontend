@@ -54,14 +54,19 @@ export const getAllOrders = () => async (dispatch, getState) => {
     }
 };
 
-export const deliverOrder = (orderid) => async (dispatch) => {
+export const deliverOrder = (orderid, status) => async (dispatch) => {
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/orders/deliverorder`, { orderid });
+        // Send updated delivery status along with order ID to the backend
+        const response = await axios.post(`${reactappbackendurl}/api/orders/deliverorder`, { orderid, status });
         console.log(response);
-        alert("Order Delivered");
+
+        // alert(`Order status updated to: ${status}`);
+
+        // Fetch the updated orders list after status change
         const orders = await axios.get(`${reactappbackendurl}/api/orders/getallorders`);
         dispatch({ type: "GET_ALLORDERS_SUCCESS", payload: orders.data });
     } catch (error) {
-        console.log(error);
+        console.error("Error while updating order status:", error);
+        alert("Failed to update order status. Please try again.");
     }
 };

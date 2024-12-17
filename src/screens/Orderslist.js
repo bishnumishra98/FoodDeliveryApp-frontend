@@ -27,6 +27,11 @@ export default function Orderslist() {
         return `${String(istDate.getUTCHours()).padStart(2, "0")}:${String(istDate.getUTCMinutes()).padStart(2, "0")}:${String(istDate.getUTCSeconds()).padStart(2, "0")}`;
     };
 
+    // Handler for delivery status change
+    const handleStatusChange = (orderId, newStatus) => {
+        dispatch(deliverOrder(orderId, newStatus));
+    };
+
     // Sort orders by createdAt (most recent first)
     const sortedOrders = orders ? [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];
 
@@ -37,16 +42,16 @@ export default function Orderslist() {
             <table className="table table-striped table-bordered table-sm table-responsive">
                 <thead className="thead-dark text-center" style={{ fontSize: "12px" }}>
                     <tr>
-                        <th>Account Holder Name</th>
-                        <th>Account Holder User ID</th>
-                        <th>Order ID</th>
-                        <th>Order Items</th>
-                        <th>Customer Name</th>
-                        <th>Customer Contact</th>
-                        <th>Delivery Address</th>
-                        <th>Amount</th>
-                        <th>Date & time</th>
-                        <th>Status</th>
+                        <th style={{ width: "8%" }}>Account Holder Name</th>
+                        <th style={{ width: "8%" }}>Account Holder User ID</th>
+                        <th style={{ width: "8%" }}>Order ID</th>
+                        <th style={{ width: "15%" }}>Order Items</th>
+                        <th style={{ width: "10%" }}>Customer Name</th>
+                        <th style={{ width: "10%" }}>Customer Contact</th>
+                        <th style={{ width: "12%" }}>Delivery Address</th>
+                        <th style={{ width: "7%" }}>Amount</th>
+                        <th style={{ width: "8%" }}>Date & Time</th>
+                        <th style={{ width: "10%" }}>Delivery Status</th>
                     </tr>
                 </thead>
 
@@ -103,26 +108,18 @@ export default function Orderslist() {
                                 <div>{getTime(order.createdAt)}</div>
                             </td>
                             <td className="text-center align-middle">
-                                {order.isDelivered ? (
-                                    <span
-                                        className="badge badge-success"
-                                        style={{
-                                            color: "black",
-                                            fontSize: "14px",
-                                            padding: "5px 10px",
-                                            fontWeight: "bold",
-                                        }}
-                                    >
-                                        Delivered
-                                    </span>
-                                ) : (
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() => dispatch(deliverOrder(order._id))}
-                                    >
-                                        Mark delivered
-                                    </button>
-                                )}
+                                <select
+                                    className="form-control"
+                                    defaultValue={order.deliveryStatus || "Placed"}
+                                    onChange={(e) => handleStatusChange(order._id, e.target.value)}
+                                    style={{ fontSize: "12px", width: "120px" }}
+                                >
+                                    <option value="orderplaced">Order placed</option>
+                                    <option value="orderaccepted">Order accepted</option>
+                                    <option value="preparingorder">Preparing order</option>
+                                    <option value="outfordelivery">Out for Delivery</option>
+                                    <option value="delivered">Delivered</option>
+                                </select>
                             </td>
                         </tr>
                     ))}
