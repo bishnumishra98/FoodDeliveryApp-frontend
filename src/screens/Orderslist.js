@@ -119,6 +119,7 @@ export default function Orderslist() {
                                     <option value="preparingorder">Preparing order</option>
                                     <option value="outfordelivery">Out for Delivery</option>
                                     <option value="delivered">Delivered</option>
+                                    <option value="orderrejected">Order rejected</option>
                                 </select>
                             </td>
                         </tr>
