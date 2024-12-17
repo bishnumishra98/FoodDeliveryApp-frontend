@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { clearCart } from "../actions/cartActions";
 import { useLocation } from "react-router-dom";
+import io from "socket.io-client";
 
 export default function Ordersscreen() {
     AOS.init();
@@ -14,6 +15,29 @@ export default function Ordersscreen() {
     const location = useLocation();
     const orderstate = useSelector((state) => state.getUserOrdersReducer);
     const { orders, error, loading } = orderstate;
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const paymentSuccess = params.get("paymentSuccess");
+        dispatch(getUserOrders());
+        if (paymentSuccess) {
+            dispatch(clearCart());
+        }
+
+        // Initialize socket connection
+        const socketConnection = io(process.env.REACT_APP_BACKEND_URL);
+
+        // Listen for order updates
+        socketConnection.on("orderStatusUpdated", (updatedOrder) => {
+            // Update order status in the local state when it's updated
+            dispatch(getUserOrders());
+        });
+
+        // Clean up the socket connection when the component unmounts
+        return () => {
+            socketConnection.disconnect();
+        };
+    }, [dispatch, location.search]);
 
     function getDate(utcDateTime) {
         const date = new Date(utcDateTime);
@@ -50,15 +74,6 @@ export default function Ordersscreen() {
         delivered: <i className="fas fa-check-double"></i>,
         orderrejected: <i className="fas fa-times-circle"></i>,
     };
-
-    useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        const paymentSuccess = params.get("paymentSuccess");
-        dispatch(getUserOrders());
-        if (paymentSuccess) {
-            dispatch(clearCart());
-        }
-    }, [dispatch, location.search]);
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif", backgroundColor: "#ffffff" }}>
@@ -124,7 +139,10 @@ export default function Ordersscreen() {
 
                                 {/* Progress Bar */}
                                 <div style={{ marginTop: "20px" }}>
-                                    <h4 style={{ color: "#007bff", fontSize: "20px" }}> <strong>Order status</strong> </h4>
+                                    <h4 style={{ color: "#007bff", fontSize: "20px" }}>
+                                        {" "}
+                                        <strong>Order status</strong>{" "}
+                                    </h4>
                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                                         {statusSteps.map((step, index) => {
                                             if (currentStatus === "orderrejected" && index > statusIndex) return null;
