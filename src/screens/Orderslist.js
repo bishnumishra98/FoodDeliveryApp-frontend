@@ -65,7 +65,7 @@ export default function Orderslist() {
 
     // Handler for delivery status change
     const handleStatusChange = (orderId, newStatus) => {
-        dispatch(deliverOrder(orderId, newStatus)); // Dispatch the status change to the backend
+        dispatch(deliverOrder(orderId, newStatus));   // dispatch the status change to the backend
         // Emit order status update to the server
         socket.emit("updateOrderStatus", { orderId, newStatus });
 
@@ -108,7 +108,7 @@ export default function Orderslist() {
 
                 <tbody style={{ fontSize: "12px" }}>
                     {sortedOrders.map((order) => {
-                        if (!order || !order._id || !order.orderItems) return null; // Prevent rendering incomplete orders
+                        if (!order || !order._id || !order.orderItems) return null;   // prevent rendering incomplete orders
 
                         return (
                             <tr key={order._id}>
