@@ -38,7 +38,7 @@ export default function Userslist() {
                         <th>Name</th>
                         <th>Email</th>
                         {/* <th>Authority</th> */}
-                        <th>Delete</th>
+                        {/* <th>Delete</th> */}
                     </tr>
                 </thead>
 
@@ -60,13 +60,13 @@ export default function Userslist() {
                                             <option value="Non-Admin">Non-Admin</option>
                                         </select>
                                     </td> */}
-                                    <td>
+                                    {/* <td>
                                         <i
                                             className="fa fa-trash trash-icon"
                                             style={{ cursor: "pointer" }}
                                             onClick={() => confirmDeleteUser(user._id)}
                                         ></i>
-                                    </td>
+                                    </td> */}
                                 </tr>
                             );
                         })}
