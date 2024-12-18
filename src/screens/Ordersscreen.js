@@ -58,12 +58,12 @@ export default function Ordersscreen() {
     ];
 
     const statusLabels = {
-        orderplaced: "Order Placed",
-        orderaccepted: "Order Accepted",
-        preparingorder: "Preparing Order",
-        outfordelivery: "Out for Delivery",
+        orderplaced: "Order placed",
+        orderaccepted: "Order accepted",
+        preparingorder: "Preparing order",
+        outfordelivery: "Out for delivery",
         delivered: "Delivered",
-        orderrejected: "Order Rejected",
+        orderrejected: "Order rejected",
     };
 
     const statusIcons = {
