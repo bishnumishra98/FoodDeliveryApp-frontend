@@ -46,7 +46,7 @@ const Navbar = () => {
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    {currentUser.name.split(" ")[0]}
+                                    {currentUser.name ? currentUser.name.split(" ")[0] : "User"}
                                 </a>
                                 <div
                                     className="dropdown-menu"

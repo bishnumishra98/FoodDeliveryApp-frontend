@@ -39,7 +39,7 @@ export default function Registerscreen() {
 				<div className="col-md-5 mt-5 text-start shadow-lg p-3 mb-5 bg-white rounded">
 					{loading && (<Loading/>)}
 					{success && (<Success success = 'User registered successfully. Please login now.'/>)}
-					{error && (<Error error = 'This email is already registered'/>)}
+					{error && (<Error error={error} />)}
 					<h2 className='text-center m-3' style={{fontSize: '33px'}}>Register</h2>
 					<div>
 						<input required type="text" placeholder='Name' className='form-control' value={name} onChange={(e) => {setname(e.target.value)}} />

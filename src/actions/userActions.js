@@ -9,9 +9,14 @@ export const registerUser = (user) => async (dispatch) => {
         console.log(response);
         dispatch({ type: "USER_REGISTER_SUCCESS" });
     } catch (error) {
-        dispatch({ type: "USER_REGISTER_FAILED", payload: error });
-  }
+        // Pass a serializable error message
+        dispatch({
+            type: "USER_REGISTER_FAILED",
+            payload: error.response?.data?.message || "Registration failed. Please try again.",
+        });
+    }
 };
+
 
 export const loginUser = (user) => async (dispatch) => {
     dispatch({ type: "USER_LOGIN_REQUEST" });
@@ -21,11 +26,16 @@ export const loginUser = (user) => async (dispatch) => {
         console.log(response);
         dispatch({ type: "USER_LOGIN_SUCCESS", payload: response.data });
         localStorage.setItem("currentUser", JSON.stringify(response.data));
-        window.location.href = "/";   // after successful login, direct the user to homepage
+        window.location.href = "/";   // Redirect to homepage
     } catch (error) {
-        dispatch({ type: "USER_LOGIN_FAILED", payload: error });
+        // Extract a user-friendly error message
+        dispatch({
+            type: "USER_LOGIN_FAILED",
+            payload: error.response?.data?.message || "Login failed. Please try again.",
+        });
     }
 };
+
 
 // When user logout, remove it from localstorage and direct them to login page.
 export const logoutUser = () => (dispatch) => {
