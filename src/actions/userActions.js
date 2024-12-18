@@ -21,7 +21,7 @@ export const loginUser = (user) => async (dispatch) => {
         console.log(response);
         dispatch({ type: "USER_LOGIN_SUCCESS", payload: response.data });
         localStorage.setItem("currentUser", JSON.stringify(response.data));
-        window.location.href = "/"; // after successful login, direct the user to homepage
+        window.location.href = "/";   // after successful login, direct the user to homepage
     } catch (error) {
         dispatch({ type: "USER_LOGIN_FAILED", payload: error });
     }
