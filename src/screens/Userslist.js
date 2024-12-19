@@ -37,8 +37,8 @@ export default function Userslist() {
                         <th>User ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        {/* <th>Authority</th> */}
-                        {/* <th>Delete</th> */}
+                        <th>Authority</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
 
@@ -50,7 +50,7 @@ export default function Userslist() {
                                     <td>{user._id}</td>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    {/* <td>
+                                    <td>
                                         <select
                                             className="form-control"
                                             value={user.isAdmin ? "Admin" : "Non-Admin"}
@@ -59,14 +59,14 @@ export default function Userslist() {
                                             <option value="Admin">Admin</option>
                                             <option value="Non-Admin">Non-Admin</option>
                                         </select>
-                                    </td> */}
-                                    {/* <td>
+                                    </td>
+                                    <td>
                                         <i
                                             className="fa fa-trash trash-icon"
                                             style={{ cursor: "pointer" }}
                                             onClick={() => confirmDeleteUser(user._id)}
                                         ></i>
-                                    </td> */}
+                                    </td>
                                 </tr>
                             );
                         })}

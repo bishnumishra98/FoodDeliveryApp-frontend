@@ -1,7 +1,7 @@
 import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 const reactappbackendurl = process.env.REACT_APP_BACKEND_URL;
 
-// 'getAllFoods' is the action name, while 'GET_FOODS_...' are the reducers.
 export const getAllFoods = () => async (dispatch) => {
 	dispatch({ type: "GET_FOODS_REQUEST" });
 
@@ -19,11 +19,12 @@ export const logoutUser = () => (dispatch) => {
 	window.location.href = "/login";
 };
 
+// Get food by id (Authenticated API)
 export const getFoodById = (foodId) => async (dispatch) => {
     dispatch({ type: "GET_FOODBYID_REQUEST" });
 
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/foods/getfoodbyid`, { foodId });
+        const response = await axiosInstance.post(`/api/foods/getfoodbyid`, { foodId });
         console.log(response);
         dispatch({ type: "GET_FOODBYID_SUCCESS", payload: response.data });
     } catch (error) {
@@ -31,6 +32,7 @@ export const getFoodById = (foodId) => async (dispatch) => {
     }
 };
 
+// Add food (Authenticated API)
 export const addFood = (food, imageFile) => async (dispatch) => {
     dispatch({ type: "ADD_FOOD_REQUEST" });
     const formData = new FormData();
@@ -38,7 +40,7 @@ export const addFood = (food, imageFile) => async (dispatch) => {
     formData.append("image", imageFile);
 
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/foods/addfood`, formData, {
+        const response = await axiosInstance.post(`/api/foods/addfood`, formData, {
 			headers: {
 				"Content-Type": "multipart/form-data",
 			},
@@ -55,6 +57,7 @@ export const addFood = (food, imageFile) => async (dispatch) => {
     }
 };
 
+// Edit food (Authenticated API)
 export const editFood = (editedFood, imageFile) => async (dispatch) => {
     dispatch({ type: "EDIT_FOOD_REQUEST" });
     const formData = new FormData();
@@ -62,7 +65,7 @@ export const editFood = (editedFood, imageFile) => async (dispatch) => {
     formData.append("image", imageFile);
 
     try {
-        const response = await axios.put(`${reactappbackendurl}/api/foods/editfood`, formData, {
+        const response = await axiosInstance.put(`/api/foods/editfood`, formData, {
 			headers: {
 				"Content-Type": "multipart/form-data",
 			},
@@ -80,9 +83,10 @@ export const editFood = (editedFood, imageFile) => async (dispatch) => {
     }
 };
 
+// Delete food (Authenticated API)
 export const deleteFood = (foodid) => async (dispatch) => {
     try {
-        const response = await axios.delete(`${reactappbackendurl}/api/foods/deletefood`, { data: { foodid } });
+        const response = await axiosInstance.delete(`/api/foods/deletefood`, { data: { foodid } });
         alert("Food deleted successfully");
         console.log(response);
         window.location.reload();
