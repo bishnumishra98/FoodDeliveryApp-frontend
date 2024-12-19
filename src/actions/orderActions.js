@@ -1,5 +1,6 @@
 import axiosInstance from "../utils/axiosConfig";
 
+// PlaceOrder action (Authenticated API)
 export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getState) => {
     dispatch({ type: "PLACE_ORDER_REQUEST" });
     const currentUser = getState().loginUserReducer.currentUser;
@@ -27,6 +28,7 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
     }
 };
 
+// getUserOrders action (Authenticated API)
 export const getUserOrders = () => async (dispatch, getState) => {
     const currentUser = getState().loginUserReducer.currentUser;
     dispatch({ type: "GET_USER_ORDERS_REQUEST" });
@@ -40,6 +42,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
     }
 };
 
+// getAllOrders action (Authenticated API)
 export const getAllOrders = () => async (dispatch, getState) => {
     // const currentUser = getState().loginUserReducer.currentUser
     dispatch({ type: "GET_ALLORDERS_REQUEST" });
@@ -53,6 +56,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
     }
 };
 
+// deliverOrder action (Authenticated API)
 export const deliverOrder = (orderid, status) => async (dispatch) => {
     try {
         // Send updated delivery status along with order ID to the backend
