@@ -10,19 +10,20 @@ import Editfood from './Editfood';
 export default function Adminscreen() {
     const userstate = useSelector((state) => state.loginUserReducer);
     const { currentUser } = userstate;
-
-    const location = useLocation(); // Get the current route
+    console.log(currentUser);
+    
+    const location = useLocation();   // get the current route
 
     useEffect(() => {
         if (!currentUser) {
-            window.location.href = "/login"; // Redirect if user is not logged in
+            window.location.href = "/login";   // redirect if user is not logged in
         } else if (!currentUser.isAdmin) {
-            window.location.href = "/"; // Redirect if user is not an admin
+            window.location.href = "/";   // redirect if user is not an admin
         }
     }, [currentUser]);
 
     if (!currentUser) {
-        return null; // Show nothing until user is validated
+        return null;   // show nothing until user is validated
     }
 
     return (
