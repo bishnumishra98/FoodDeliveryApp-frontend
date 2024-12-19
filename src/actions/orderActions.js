@@ -1,5 +1,4 @@
-import axios from "axios";
-const reactappbackendurl = process.env.REACT_APP_BACKEND_URL;
+import axiosInstance from "../utils/axiosConfig";
 
 export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getState) => {
     dispatch({ type: "PLACE_ORDER_REQUEST" });
@@ -8,7 +7,7 @@ export const placeOrder = (subtotal, deliveryAddress) => async (dispatch, getSta
 
     try {
         // API call to initiate the order and get the payment URL
-        const response = await axios.post(`${reactappbackendurl}/api/orders/placeorder`, {
+        const response = await axiosInstance.post(`/api/orders/placeorder`, {
             currentUser,
             cartItems,
             subtotal,
@@ -33,7 +32,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
     dispatch({ type: "GET_USER_ORDERS_REQUEST" });
 
     try {
-        const response = await axios.post(`${reactappbackendurl}/api/orders/getuserorders`, { userid: currentUser._id });
+        const response = await axiosInstance.post(`/api/orders/getuserorders`, { userid: currentUser._id });
         console.log(response);
         dispatch({ type: "GET_USER_ORDERS_SUCCESS", payload: response.data });
     } catch (error) {
@@ -46,7 +45,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
     dispatch({ type: "GET_ALLORDERS_REQUEST" });
 
     try {
-        const response = await axios.get(`${reactappbackendurl}/api/orders/getallorders`);
+        const response = await axiosInstance.get(`/api/orders/getallorders`);
         console.log(response);
         dispatch({ type: "GET_ALLORDERS_SUCCESS", payload: response.data });
     } catch (error) {
@@ -57,13 +56,13 @@ export const getAllOrders = () => async (dispatch, getState) => {
 export const deliverOrder = (orderid, status) => async (dispatch) => {
     try {
         // Send updated delivery status along with order ID to the backend
-        const response = await axios.post(`${reactappbackendurl}/api/orders/deliverorder`, { orderid, status });
+        const response = await axiosInstance.post(`/api/orders/deliverorder`, { orderid, status });
         console.log(response);
 
         // alert(`Order status updated to: ${status}`);
 
         // Fetch the updated orders list after status change
-        const orders = await axios.get(`${reactappbackendurl}/api/orders/getallorders`);
+        const orders = await axiosInstance.get(`/api/orders/getallorders`);
         dispatch({ type: "GET_ALLORDERS_SUCCESS", payload: orders.data });
     } catch (error) {
         console.error("Error while updating order status:", error);
