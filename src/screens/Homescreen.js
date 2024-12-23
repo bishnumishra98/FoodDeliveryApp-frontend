@@ -55,7 +55,7 @@ export default function Homescreen() {
                         <span className="slider"></span>
                     </label>
                     <span className="toggle-text">
-                        {showVegOnly ? "Veg only" : "Show all"}
+                        {showVegOnly ? "Veg only" : "Veg only"}
                     </span>
                 </div>
             </div>
