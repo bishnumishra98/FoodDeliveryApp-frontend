@@ -16,11 +16,18 @@ export default function Foodslist() {
 
     // Function to handle food deletion with confirmation prompt
     const handleDeleteFood = (foodId) => {
-        const confirmation = window.confirm("Are you sure you want to delete this food item? This action cannot be undone.");
+        const confirmation = window.confirm(
+            "Are you sure you want to delete this food item? This action cannot be undone."
+        );
         if (confirmation) {
             dispatch(deleteFood(foodId));
         }
     };
+
+    // Sort foods by createdAt in descending order (most recent first)
+    const sortedFoods = [...foods].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
 
     return (
         <div>
@@ -55,8 +62,8 @@ export default function Foodslist() {
                     </tr>
                 </thead>
                 <tbody>
-                    {foods &&
-                        foods.map((food) => (
+                    {sortedFoods &&
+                        sortedFoods.map((food) => (
                             <tr key={food._id}>
                                 <td>{food.name}</td>
                                 <td>{food.size}</td>

@@ -26,6 +26,11 @@ export default function Userslist() {
         }
     };
 
+    // Sort users by createdAt in descending order (most recent first)
+    const sortedUsers = [...users].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
     return (
         <div>
             <h1>Users List</h1>
@@ -43,8 +48,8 @@ export default function Userslist() {
                 </thead>
 
                 <tbody>
-                    {users &&
-                        users.map((user) => {
+                    {sortedUsers &&
+                        sortedUsers.map((user) => {
                             return (
                                 <tr key={user._id}>
                                     <td>{user._id}</td>
