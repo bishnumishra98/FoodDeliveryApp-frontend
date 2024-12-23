@@ -19,8 +19,13 @@ export default function Homescreen() {
         dispatch(getAllFoods());
     }, [dispatch]);
 
+    // Sort foods by createdAt in descending order (most recent first)
+    const sortedFoods = [...foods].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
     // Filter foods based on Veg toggle and search term
-    const filteredFoods = foods
+    const filteredFoods = sortedFoods
         .filter((food) => (showVegOnly ? food.category === "veg" : true))
         .filter((food) =>
             food.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -50,7 +55,7 @@ export default function Homescreen() {
                         <span className="slider"></span>
                     </label>
                     <span className="toggle-text">
-                        {showVegOnly ? "Veg only" : "Veg only"}
+                        {showVegOnly ? "Veg only" : "Show all"}
                     </span>
                 </div>
             </div>
