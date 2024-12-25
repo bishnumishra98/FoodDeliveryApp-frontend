@@ -28,8 +28,8 @@ export const loginUser = (user) => async (dispatch) => {
 
         dispatch({ type: "USER_LOGIN_SUCCESS", payload: currentUser });
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
-        localStorage.setItem("authToken", token); // Save JWT token
-        window.location.href = "/"; // Redirect to homepage
+        localStorage.setItem("authToken", token);   // save JWT token
+        window.location.href = "/";   // redirect to homepage
     } catch (error) {
         dispatch({
             type: "USER_LOGIN_FAILED",
