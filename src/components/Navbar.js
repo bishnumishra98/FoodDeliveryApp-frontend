@@ -19,6 +19,30 @@ const Navbar = () => {
                 <a className="navbar-brand" href="/">
                     Food Delivery App
                 </a>
+                <div className="notice" style={{ marginTop: "10px", marginLeft: "10px", marginRight: "10px", color: "#2F4F4F" }}>
+                    <p style={{ textAlign: "left" }}>
+                        <span style={{ fontWeight: "bold" }}>Note:</span> The backend is deployed on a free instance of{" "}
+                        <a
+                        href="https://render.com/"
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        style={{ color: "#2F4F4F" }}
+                        >
+                        Render
+                        </a>
+                        , resulting in an initial response time of 30-90 seconds for the first time this app wakes up after a prolonged idle period. By that time, you may go through the{" "}
+                        <a
+                        href="https://drive.google.com/file/d/1hZXEbSJOgbTGIn-PQPyPsf5zb63hGvsk/view"
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        style={{ color: "#2F4F4F" }}
+                        >
+                        Illustration video
+                        </a>
+                        . Thank you for your understanding🙃.
+                    </p>
+                </div>
+
                 <button
                     className="navbar-toggler"
                     type="button"
