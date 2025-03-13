@@ -30,7 +30,7 @@ const Navbar = () => {
                         >
                         Render
                         </a>
-                        , resulting in an initial response time of 30-90 seconds for the first time this app wakes up after a prolonged idle period. By that time, you may go through the{" "}
+                        , resulting in an initial response time of 30-60 seconds for the first time this app wakes up after a prolonged idle period. By that time, you may go through the{" "}
                         <a
                         href="https://drive.google.com/file/d/1hZXEbSJOgbTGIn-PQPyPsf5zb63hGvsk/view"
                         target="_blank"
