@@ -22,6 +22,9 @@ A full-stack food delivery application supporting customer ordering, real-time o
 - WebSocket layer for real-time updates
 - Stateless backend services with MongoDB persistence
 
+## Backend repo
+- URL: https://github.com/bishnumishra98/FoodDeliveryApp-backend
+
 ## Illustration video
 - URL: https://drive.google.com/file/d/1hZXEbSJOgbTGIn-PQPyPsf5zb63hGvsk/view
 
